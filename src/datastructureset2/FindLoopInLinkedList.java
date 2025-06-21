@@ -7,7 +7,7 @@ public class FindLoopInLinkedList {
 
         //FindIntersectionNodeInLL.Node list1= FindIntersectionNodeInLL.createLL(5);
         //  Node list1=Node.createLL(4);
-        Node list1 = Node.createLLWithManualEntryData(new int[]{1,2,3});
+        Node list1 = Node.createLLWithManualEntryData(new int[]{1, 2, 3});
         System.out.println("\n Before loop");
         Node.printLL(list1);
 

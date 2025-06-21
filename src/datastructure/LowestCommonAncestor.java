@@ -30,58 +30,59 @@ Steps:
 
  */
 
-    public static ArrayList<BinarySearchTree.Node> searchAndStoreNodePathInArrayList(int searchKey,BinarySearchTree.Node root){
-        ArrayList<BinarySearchTree.Node> searchKeyPathNodeList=new ArrayList<>();
-        BinarySearchTree.Node currentNode=root;
-        boolean isSearchKeyFound=false;
+    public static ArrayList<BinarySearchTree.Node> searchAndStoreNodePathInArrayList(int searchKey, BinarySearchTree.Node root) {
+        ArrayList<BinarySearchTree.Node> searchKeyPathNodeList = new ArrayList<>();
+        BinarySearchTree.Node currentNode = root;
+        boolean isSearchKeyFound = false;
 
-        while(currentNode!=null){
+        while (currentNode != null) {
 
-            if(currentNode.data==searchKey){
+            if (currentNode.data == searchKey) {
                 searchKeyPathNodeList.add(currentNode);
-                System.out.println("Search key found:"+currentNode.data);
-                isSearchKeyFound=true;
+                System.out.println("Search key found:" + currentNode.data);
+                isSearchKeyFound = true;
                 break;
-            }else if(searchKey<currentNode.data){
+            } else if (searchKey < currentNode.data) {
                 searchKeyPathNodeList.add(currentNode);
-                currentNode=currentNode.leftChild;
-            }else{
+                currentNode = currentNode.leftChild;
+            } else {
                 searchKeyPathNodeList.add(currentNode);
-                currentNode=currentNode.rightChild;
+                currentNode = currentNode.rightChild;
             }
         }
 
-        if(!isSearchKeyFound) {
+        if (!isSearchKeyFound) {
             System.out.println("Given search key not found");
         }
         return searchKeyPathNodeList;
     }
 
-    public static BinarySearchTree.Node findCommonParent(ArrayList<BinarySearchTree.Node> smallerPathList,ArrayList<BinarySearchTree.Node> biggerPathList){
+    public static BinarySearchTree.Node findCommonParent(ArrayList<BinarySearchTree.Node> smallerPathList, ArrayList<BinarySearchTree.Node> biggerPathList) {
 
-        BinarySearchTree.Node commonParent=null;
+        BinarySearchTree.Node commonParent = null;
         for (int i = 0; i < smallerPathList.size(); i++) {
 
-            if(biggerPathList.contains(smallerPathList.get(i))){
-                commonParent=smallerPathList.get(i);
+            if (biggerPathList.contains(smallerPathList.get(i))) {
+                commonParent = smallerPathList.get(i);
             }
         }
-       return commonParent;
+        return commonParent;
 
     }
-    public static BinarySearchTree.Node findLowestCommonAncestor(BinarySearchTree.Node root,int node1Data,int node2Data){
 
-        ArrayList<BinarySearchTree.Node> traversedNodeListOfNode1=searchAndStoreNodePathInArrayList(node1Data,root);
-        ArrayList<BinarySearchTree.Node> traversedNodeListOfNode2=searchAndStoreNodePathInArrayList(node2Data,root);
-        BinarySearchTree.Node leastCommonParent=null;
+    public static BinarySearchTree.Node findLowestCommonAncestor(BinarySearchTree.Node root, int node1Data, int node2Data) {
 
-        if(traversedNodeListOfNode1.size()<traversedNodeListOfNode2.size()){
-            leastCommonParent=findCommonParent(traversedNodeListOfNode1,traversedNodeListOfNode2);
-        }else{
-            leastCommonParent=findCommonParent(traversedNodeListOfNode2,traversedNodeListOfNode1);
+        ArrayList<BinarySearchTree.Node> traversedNodeListOfNode1 = searchAndStoreNodePathInArrayList(node1Data, root);
+        ArrayList<BinarySearchTree.Node> traversedNodeListOfNode2 = searchAndStoreNodePathInArrayList(node2Data, root);
+        BinarySearchTree.Node leastCommonParent = null;
+
+        if (traversedNodeListOfNode1.size() < traversedNodeListOfNode2.size()) {
+            leastCommonParent = findCommonParent(traversedNodeListOfNode1, traversedNodeListOfNode2);
+        } else {
+            leastCommonParent = findCommonParent(traversedNodeListOfNode2, traversedNodeListOfNode1);
         }
 
-        System.out.println("Least common parent: "+leastCommonParent.data);
+        System.out.println("Least common parent: " + leastCommonParent.data);
 
         return leastCommonParent;
     }

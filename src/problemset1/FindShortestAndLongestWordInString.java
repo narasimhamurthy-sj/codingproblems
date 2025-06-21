@@ -26,7 +26,7 @@ public class FindShortestAndLongestWordInString {
         }
         inputString = inputString.trim();
 
-        inputString= inputString.replaceAll("[-\\.!\\?\\(\\)_\\*,'\\+]+","");
+        inputString = inputString.replaceAll("[-\\.!\\?\\(\\)_\\*,'\\+]+", "");
         String[] wordsArray = inputString.split("\s+");
 
         String shortestWord = wordsArray[0];

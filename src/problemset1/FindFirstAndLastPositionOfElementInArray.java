@@ -27,83 +27,82 @@ Output: [-1,-1]
  */
 
 
+    public static int[] findFirstAndLastPosition(int[] inputArray, int target) {
 
-    public static int[] findFirstAndLastPosition(int[] inputArray,int target){
-
-         Integer[] inputArrObj=new Integer[inputArray.length];
-        for (int i = 0; i <inputArray.length ; i++) {
-            inputArrObj[i]=inputArray[i];
+        Integer[] inputArrObj = new Integer[inputArray.length];
+        for (int i = 0; i < inputArray.length; i++) {
+            inputArrObj[i] = inputArray[i];
         }
-        if(inputArray.length==0){
+        if (inputArray.length == 0) {
             System.out.println("Empty array");
-            return new int[] {-1,-1};
+            return new int[]{-1, -1};
         }
-        ArrayList<Integer> arrayAsList=new ArrayList(Arrays.asList(inputArrObj));
+        ArrayList<Integer> arrayAsList = new ArrayList(Arrays.asList(inputArrObj));
 
-        return new int[]{arrayAsList.indexOf(target),arrayAsList.lastIndexOf(target)};
+        return new int[]{arrayAsList.indexOf(target), arrayAsList.lastIndexOf(target)};
 
     }
 
+    public static int findPositionViaBinarySearch(int[] inputArray, int target, boolean isFirstOccuranceSearch) {
 
-    public int[] indexOfFirstAndLastPosition(int[] arr,int target){
-
-        int firstPosition=findPositionViaBinarySearch(arr,target,true);
-        System.out.println("firstPosition:"+firstPosition);
-        if(firstPosition==-1){
-            return new int[]{-1,-1};
-        }
-        int lastPosition=findPositionViaBinarySearch(arr,target,false);
-        System.out.println("lastPosition:"+lastPosition);
-
-        return new int[]{firstPosition,lastPosition};
-
-
-    }
-
-    public static int findPositionViaBinarySearch(int[] inputArray, int target, boolean isFirstOccuranceSearch){
-
-        int leftIndex=0;
-        int rightIndex=inputArray.length-1;
-        int position=-1;
+        int leftIndex = 0;
+        int rightIndex = inputArray.length - 1;
+        int position = -1;
         int mid;
 
-        while(leftIndex<=rightIndex){
+        while (leftIndex <= rightIndex) {
 
-            mid=(leftIndex+rightIndex)/2;
+            mid = (leftIndex + rightIndex) / 2;
 
-            if(isFirstOccuranceSearch){
+            if (isFirstOccuranceSearch) {
 
-                if(inputArray[mid]>=target){
-                    rightIndex=mid-1;
-                    if(inputArray[mid]==target){
-                        position=mid;
+                if (inputArray[mid] >= target) {
+                    rightIndex = mid - 1;
+                    if (inputArray[mid] == target) {
+                        position = mid;
                     }
-                }else{
-                    leftIndex=mid+1;
+                } else {
+                    leftIndex = mid + 1;
                 }
-            }else{
+            } else {
                 //last position of element search
 
-                if(inputArray[mid]<=target){
-                    leftIndex=mid+1;
-                    if(inputArray[mid]==target){
-                        position=mid;
+                if (inputArray[mid] <= target) {
+                    leftIndex = mid + 1;
+                    if (inputArray[mid] == target) {
+                        position = mid;
                     }
-                }else{
-                    rightIndex=mid-1;
+                } else {
+                    rightIndex = mid - 1;
                 }
             }
         }
 
         return position;
     }
+
     public static void main(String[] args) {
 
-       // Arrays.stream(findFirstAndLastPosition(new int[]{3,3,3,3,3,3},3)).forEach(element->System.out.println(element));
+        // Arrays.stream(findFirstAndLastPosition(new int[]{3,3,3,3,3,3},3)).forEach(element->System.out.println(element));
 
-       // new FindFirstAndLastPositionOfElementInArray().searchRange(new int[]{3,3,3,3,3,3},3)
+        // new FindFirstAndLastPositionOfElementInArray().searchRange(new int[]{3,3,3,3,3,3},3)
 
-        Arrays.stream(new FindFirstAndLastPositionOfElementInArray().indexOfFirstAndLastPosition(new int[]{2,2,2,3,3,4,4},4)).forEach(element->System.out.println(element));
+        Arrays.stream(new FindFirstAndLastPositionOfElementInArray().indexOfFirstAndLastPosition(new int[]{2, 2, 2, 3, 3, 4, 4}, 4)).forEach(element -> System.out.println(element));
+
+    }
+
+    public int[] indexOfFirstAndLastPosition(int[] arr, int target) {
+
+        int firstPosition = findPositionViaBinarySearch(arr, target, true);
+        System.out.println("firstPosition:" + firstPosition);
+        if (firstPosition == -1) {
+            return new int[]{-1, -1};
+        }
+        int lastPosition = findPositionViaBinarySearch(arr, target, false);
+        System.out.println("lastPosition:" + lastPosition);
+
+        return new int[]{firstPosition, lastPosition};
+
 
     }
 }

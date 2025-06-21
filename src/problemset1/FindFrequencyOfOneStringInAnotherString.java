@@ -82,8 +82,8 @@ o/p: abc abc  and count:2
 
     public static void main(String[] args) {
 
-       // findFrequencyByExactWords("abcx", "abc abcd ab abc");
+        // findFrequencyByExactWords("abcx", "abc abcd ab abc");
 
-        usingIndexOfMethod("abc abcd ab abc","abc");
+        usingIndexOfMethod("abc abcd ab abc", "abc");
     }
 }

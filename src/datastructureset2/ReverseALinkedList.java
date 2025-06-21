@@ -51,34 +51,33 @@ public class ReverseALinkedList {
     }
 
 
+    public static FindIntersectionNodeInLL.Node reverseLL(FindIntersectionNodeInLL.Node head) {
 
-
-    public static FindIntersectionNodeInLL.Node reverseLL(FindIntersectionNodeInLL.Node head){
-
-        FindIntersectionNodeInLL.Node prev=null;
-        FindIntersectionNodeInLL.Node cur=head;
+        FindIntersectionNodeInLL.Node prev = null;
+        FindIntersectionNodeInLL.Node cur = head;
         FindIntersectionNodeInLL.Node next;
 
-        while(cur!=null){
+        while (cur != null) {
 
-            next=cur.link;
-            cur.link=prev;
-            prev=cur;
-            cur=next;
+            next = cur.link;
+            cur.link = prev;
+            prev = cur;
+            cur = next;
 
         }
 
-        head=prev;
+        head = prev;
 
         return head;
     }
+
     public static void main(String[] args) {
 
         FindIntersectionNodeInLL.Node ll = FindIntersectionNodeInLL.createLL(10);
         FindIntersectionNodeInLL.printLL(ll);
 
         System.out.println("\n after reverse");
-       // FindIntersectionNodeInLL.printLL(revreseNode(ll));
+        // FindIntersectionNodeInLL.printLL(revreseNode(ll));
 
 
         FindIntersectionNodeInLL.printLL(reverseLL(ll));

@@ -66,9 +66,9 @@ public class FindSecondHighestElementInHashMap {
         int secondHighest;
         int keyForSecondHighest;
         int keyForFirstHighest;
-        int descendingCount=1;
-        int secondElement=0;
-        int secondElementKey=0;
+        int descendingCount = 1;
+        int secondElement = 0;
+        int secondElementKey = 0;
 
 
         firstHighest = secondHighest = givenMap.entrySet().iterator().next().getValue();
@@ -86,21 +86,21 @@ public class FindSecondHighestElementInHashMap {
                 firstHighest = v;
                 keyForFirstHighest = k;
             } else {
-                if(descendingCount==2){
-                    secondElement=v;
-                    secondElementKey=k;
+                if (descendingCount == 2) {
+                    secondElement = v;
+                    secondElementKey = k;
                 }
                 if (v > secondHighest) {
                     secondHighest = v;
                     keyForSecondHighest = k;
-                }else{
+                } else {
                     descendingCount++;
                 }
             }
         }
-        if((descendingCount-1)==givenMap.size()){
+        if ((descendingCount - 1) == givenMap.size()) {
             System.out.println("\nSecond Highest Key:" + secondElementKey + " Value:" + secondElement);
-        }else {
+        } else {
             System.out.println("\nSecond Highest Key:" + keyForSecondHighest + " Value:" + secondHighest);
         }
 
@@ -112,8 +112,8 @@ public class FindSecondHighestElementInHashMap {
         Integer highest = Integer.MIN_VALUE;
         Integer secondHighest = Integer.MIN_VALUE;
 
-        System.out.println("highest"+highest);
-        System.out.println("secondHighest"+secondHighest);
+        System.out.println("highest" + highest);
+        System.out.println("secondHighest" + secondHighest);
 
         for (Integer value : map.values()) {
             if (value > highest) {
@@ -124,7 +124,7 @@ public class FindSecondHighestElementInHashMap {
             }
         }
 
-        System.out.println("Second Highest:"+secondHighest);
+        System.out.println("Second Highest:" + secondHighest);
         return secondHighest;
     }
 
@@ -141,10 +141,10 @@ public class FindSecondHighestElementInHashMap {
         map.put(2, -2);
         map.put(3, -3);
         map.put(4, -4);
-       // map.put(5, 20);
+        // map.put(5, 20);
         // map.put(5,5);
 
-      //  findSecondHighestElement(map);
+        //  findSecondHighestElement(map);
 
         findSecondHighest(map);
     }

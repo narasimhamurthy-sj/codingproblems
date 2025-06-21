@@ -26,24 +26,24 @@ public class ToggleCharacter {
 8. empty string or null
    */
 
-    public static String changeLowerToUppercaseAndViceVersa(String inputString){
+    public static String changeLowerToUppercaseAndViceVersa(String inputString) {
 
-       if(inputString==null ||inputString.isEmpty() ){
-           System.out.println("String soesn't contain characters");
-           return inputString;
-       }
-        System.out.println("Input String:"+inputString);
-        char[] characterArray=inputString.toCharArray();
+        if (inputString == null || inputString.isEmpty()) {
+            System.out.println("String soesn't contain characters");
+            return inputString;
+        }
+        System.out.println("Input String:" + inputString);
+        char[] characterArray = inputString.toCharArray();
         char characterFromArray;
-        for (char indexOfCharacterArray=0;indexOfCharacterArray<=characterArray.length-1;indexOfCharacterArray++ ){
+        for (char indexOfCharacterArray = 0; indexOfCharacterArray <= characterArray.length - 1; indexOfCharacterArray++) {
 
-            if(Character.isLowerCase(characterArray[indexOfCharacterArray])){
-                characterArray[indexOfCharacterArray]=Character.toUpperCase(characterArray[indexOfCharacterArray]);
-            }else{
-                characterArray[indexOfCharacterArray]=Character.toLowerCase(characterArray[indexOfCharacterArray]);
+            if (Character.isLowerCase(characterArray[indexOfCharacterArray])) {
+                characterArray[indexOfCharacterArray] = Character.toUpperCase(characterArray[indexOfCharacterArray]);
+            } else {
+                characterArray[indexOfCharacterArray] = Character.toLowerCase(characterArray[indexOfCharacterArray]);
             }
         }
-        System.out.println("Toggled string:"+new String(characterArray));
+        System.out.println("Toggled string:" + new String(characterArray));
         return new String(characterArray);
     }
 

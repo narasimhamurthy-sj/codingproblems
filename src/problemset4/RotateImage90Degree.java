@@ -146,170 +146,210 @@ while(itr>=0){
 
  */
 public class RotateImage90Degree {
-    ArrayList<Integer> list=new ArrayList<>();
-int[][] pushTopRowElementsToColumn(int rowIndex,int swapColumnIndex,int cycleCount,int[][] matrix){
+    ArrayList<Integer> list = new ArrayList<>();
 
-    int columnIndex=cycleCount-1;
-    int swapRowIndex=cycleCount-1;
-    for(int pushIteration=cycleCount;pushIteration<=swapColumnIndex;pushIteration++){
-        list.add(matrix[swapRowIndex][swapColumnIndex]);
-        matrix[swapRowIndex++][swapColumnIndex]=matrix[rowIndex][columnIndex++];
-    }//end of for
-    //store last column element before swap
-    list.add(matrix[swapRowIndex][swapColumnIndex]);
+    public static void main(String[] args) {
+        int[][] arr = {{1, 2, 3,},
+                {4, 5, 6,},
+                {7, 8, 9,}
 
-    //push
-    matrix[swapRowIndex][swapColumnIndex]=list.getFirst();
-    //System.out.println("List data:"+list.toString());
-    //Remove already assigned data as there is no use of that element and also improve space complexity
-    list.removeFirst();
+        };
 
-return matrix;
-}
+        int[][] arr2 = {{1, 2, 3, 4},
+                {5, 6, 7, 8},
+                {9, 10, 11, 12},
+                {13, 14, 15, 16}
 
-    int[][] pushColumnElementsToRowUsingList(int cycleCount,int rowIndex,int swapColumnIndex,int [][] matrix,int excludeColumn){
+        };
 
-  int  itr=swapColumnIndex-excludeColumn;
-    while(itr>=0){
+        int[][] arr3 = {{1, 2, 3, 4, 5},
+                {6, 7, 8, 9, 10},
+                {11, 12, 13, 14, 15},
+                {16, 17, 18, 19, 20},
+                {21, 22, 23, 24, 25}
 
-        list.add(matrix[rowIndex][swapColumnIndex]);
-        matrix[rowIndex][swapColumnIndex]=list.getFirst();
-       // System.out.println("List data:"+list.toString());
-        list.remove(0);
+        };
+        int[][] arr4 = {{1, 2, 3, 4, 5, 6},
+                {7, 8, 9, 10, 11, 12},
+                {13, 14, 15, 16, 17, 18},
+                {19, 20, 21, 22, 23, 24},
+                {25, 26, 27, 28, 29, 30},
+                {31, 32, 33, 34, 35, 36}
 
-        swapColumnIndex--;
-        itr--;
+        };
+
+        int[][] arr5 = {{1, 2},
+                {3, 4},
+
+
+        };
+
+        int[][] arr6 = {{1, 2},
+
+
+        };
+
+
+        RotateImage90Degree rotateObject = new RotateImage90Degree();
+        // rotateObject.rotateMatrixBy90(arr);
+        // rotateObject.rotateByCircularMotion(arr);
+        rotateObject.rotateByCircularMotion(arr6);
     }
 
+    int[][] pushTopRowElementsToColumn(int rowIndex, int swapColumnIndex, int cycleCount, int[][] matrix) {
 
-        return matrix;
-}
+        int columnIndex = cycleCount - 1;
+        int swapRowIndex = cycleCount - 1;
+        for (int pushIteration = cycleCount; pushIteration <= swapColumnIndex; pushIteration++) {
+            list.add(matrix[swapRowIndex][swapColumnIndex]);
+            matrix[swapRowIndex++][swapColumnIndex] = matrix[rowIndex][columnIndex++];
+        }//end of for
+        //store last column element before swap
+        list.add(matrix[swapRowIndex][swapColumnIndex]);
 
-    int[][] pushRowElementsToColumnBottomToTopUsingList(int rowIndex,int swapColumnIndex,int[][] matrix,int excludeColumn){
-
-    int  itr=rowIndex-excludeColumn;
-    while(itr>=0){
-
-
-        list.add(matrix[rowIndex][swapColumnIndex]);
-        matrix[rowIndex--][swapColumnIndex]=list.getFirst();
-       // System.out.println("List data:"+list.toString());
+        //push
+        matrix[swapRowIndex][swapColumnIndex] = list.getFirst();
+        //System.out.println("List data:"+list.toString());
+        //Remove already assigned data as there is no use of that element and also improve space complexity
         list.removeFirst();
 
-
-        itr--;
-
-
+        return matrix;
     }
 
-        return matrix;
+    int[][] pushColumnElementsToRowUsingList(int cycleCount, int rowIndex, int swapColumnIndex, int[][] matrix, int excludeColumn) {
 
-}
+        int itr = swapColumnIndex - excludeColumn;
+        while (itr >= 0) {
 
-    int[][] pushColumnElementsToTopRowUsingList(int rowIndex,int swapColumnIndex,int[][] matrix,int excludeColumn,int cycleCount) {
+            list.add(matrix[rowIndex][swapColumnIndex]);
+            matrix[rowIndex][swapColumnIndex] = list.getFirst();
+            // System.out.println("List data:"+list.toString());
+            list.remove(0);
 
-   // int itr = matrix.length - cycleCount - excludeColumn - 2;
-        int itr;
-        if(cycleCount==1){
-            itr= matrix.length - cycleCount  - 2;
-        }else{
-            itr= matrix.length - cycleCount - excludeColumn - 1;
+            swapColumnIndex--;
+            itr--;
         }
 
 
-    while (itr >= 0) {
-
-        matrix[rowIndex][swapColumnIndex++] = list.getFirst();
-       // System.out.println("List data:"+list.toString());
-        list.removeFirst();
-        itr--;
-
-
+        return matrix;
     }
+
+    int[][] pushRowElementsToColumnBottomToTopUsingList(int rowIndex, int swapColumnIndex, int[][] matrix, int excludeColumn) {
+
+        int itr = rowIndex - excludeColumn;
+        while (itr >= 0) {
+
+
+            list.add(matrix[rowIndex][swapColumnIndex]);
+            matrix[rowIndex--][swapColumnIndex] = list.getFirst();
+            // System.out.println("List data:"+list.toString());
+            list.removeFirst();
+
+
+            itr--;
+
+
+        }
 
         return matrix;
-}
-    void rotateByCircularMotion(int[][] matrix){
+
+    }
+
+    int[][] pushColumnElementsToTopRowUsingList(int rowIndex, int swapColumnIndex, int[][] matrix, int excludeColumn, int cycleCount) {
+
+        // int itr = matrix.length - cycleCount - excludeColumn - 2;
+        int itr;
+        if (cycleCount == 1) {
+            itr = matrix.length - cycleCount - 2;
+        } else {
+            itr = matrix.length - cycleCount - excludeColumn - 1;
+        }
 
 
-      int totalRows=matrix.length;
-      int totalColumn=matrix[0].length;
+        while (itr >= 0) {
 
-      int totalCycles= matrix.length/2;
-      int cycleCount=1;
-      int rowIndex,swapColumnIndex,excludeColumn;
+            matrix[rowIndex][swapColumnIndex++] = list.getFirst();
+            // System.out.println("List data:"+list.toString());
+            list.removeFirst();
+            itr--;
+
+
+        }
+
+        return matrix;
+    }
+
+    void rotateByCircularMotion(int[][] matrix) {
+
+
+        int totalRows = matrix.length;
+        int totalColumn = matrix[0].length;
+
+        int totalCycles = matrix.length / 2;
+        int cycleCount = 1;
+        int rowIndex, swapColumnIndex, excludeColumn;
         printMatrix(matrix);
-        excludeColumn=0;
-      while(cycleCount<=totalCycles){
+        excludeColumn = 0;
+        while (cycleCount <= totalCycles) {
 
-        //  System.out.println("start of Itr: "+cycleCount+"");
-         // push top row elements to last column
-          rowIndex=cycleCount-1;
-          swapColumnIndex=matrix[0].length-cycleCount;
-          matrix=pushTopRowElementsToColumn(rowIndex,swapColumnIndex,cycleCount,matrix);
-       //   System.out.println("- ----------------------");
-         // printMatrix(matrix);
+            //  System.out.println("start of Itr: "+cycleCount+"");
+            // push top row elements to last column
+            rowIndex = cycleCount - 1;
+            swapColumnIndex = matrix[0].length - cycleCount;
+            matrix = pushTopRowElementsToColumn(rowIndex, swapColumnIndex, cycleCount, matrix);
+            //   System.out.println("- ----------------------");
+            // printMatrix(matrix);
 
-          // push last column elements to last row
-          rowIndex=matrix.length-cycleCount;
-          swapColumnIndex=matrix[0].length-cycleCount-1;
-        //increment excludeColumn, each iteration to control loop execution
+            // push last column elements to last row
+            rowIndex = matrix.length - cycleCount;
+            swapColumnIndex = matrix[0].length - cycleCount - 1;
+            //increment excludeColumn, each iteration to control loop execution
 
-          matrix=pushColumnElementsToRowUsingList(cycleCount,rowIndex,swapColumnIndex,matrix,excludeColumn);
-        //  System.out.println("- ----------------------");
-        //  printMatrix(matrix);
-
-
-          // push last row elements to first column
-          rowIndex=matrix.length-cycleCount-1;
-          swapColumnIndex=excludeColumn;
-          matrix=pushRowElementsToColumnBottomToTopUsingList(rowIndex,swapColumnIndex,matrix,excludeColumn);
-        //  System.out.println("- ----------------------");
-        //  printMatrix(matrix);
+            matrix = pushColumnElementsToRowUsingList(cycleCount, rowIndex, swapColumnIndex, matrix, excludeColumn);
+            //  System.out.println("- ----------------------");
+            //  printMatrix(matrix);
 
 
-
-          // push first column elements to first row
-          rowIndex=excludeColumn;
-          swapColumnIndex=cycleCount;
-          matrix=pushColumnElementsToTopRowUsingList(rowIndex,swapColumnIndex,matrix,excludeColumn,cycleCount);
-        //  System.out.println("- ----------------------");
-        //  printMatrix(matrix);
-          System.out.println("Itr"+cycleCount+" is completed");
-          cycleCount++;
-          excludeColumn++;
-
-          list.clear();
-
-      }
+            // push last row elements to first column
+            rowIndex = matrix.length - cycleCount - 1;
+            swapColumnIndex = excludeColumn;
+            matrix = pushRowElementsToColumnBottomToTopUsingList(rowIndex, swapColumnIndex, matrix, excludeColumn);
+            //  System.out.println("- ----------------------");
+            //  printMatrix(matrix);
 
 
+            // push first column elements to first row
+            rowIndex = excludeColumn;
+            swapColumnIndex = cycleCount;
+            matrix = pushColumnElementsToTopRowUsingList(rowIndex, swapColumnIndex, matrix, excludeColumn, cycleCount);
+            //  System.out.println("- ----------------------");
+            //  printMatrix(matrix);
+            System.out.println("Itr" + cycleCount + " is completed");
+            cycleCount++;
+            excludeColumn++;
 
-      System.out.println("After rotate");
-     printMatrix(matrix);
+            list.clear();
+
+        }
 
 
-
+        System.out.println("After rotate");
+        printMatrix(matrix);
 
 
     }
 
+    void rotateMatrixBy90(int[][] matrix) {
 
-
-
-
-
-    void rotateMatrixBy90(int[][] matrix){
-
-        int totalRowsInMatrix= matrix.length;
-        int totalColumnInMatrix=matrix[0].length;
+        int totalRowsInMatrix = matrix.length;
+        int totalColumnInMatrix = matrix[0].length;
 
         printMatrix(matrix);
-        ArrayList<Integer> rotatedDataInList=new ArrayList<>();
-        int rowIndex,columnIndex;
+        ArrayList<Integer> rotatedDataInList = new ArrayList<>();
+        int rowIndex, columnIndex;
         for (int i = 0; i < totalRowsInMatrix; i++) {
-            rowIndex=totalRowsInMatrix-1;
-            columnIndex=i;
+            rowIndex = totalRowsInMatrix - 1;
+            columnIndex = i;
             for (int j = 0; j < totalColumnInMatrix; j++) {
 
                 rotatedDataInList.add(matrix[rowIndex][columnIndex]);
@@ -317,10 +357,10 @@ return matrix;
             }
         }
 
-        int listIndex=0;
-        for (int i = 0; i <totalRowsInMatrix ; i++) {
+        int listIndex = 0;
+        for (int i = 0; i < totalRowsInMatrix; i++) {
             for (int j = 0; j < totalColumnInMatrix; j++) {
-                matrix[i][j]=rotatedDataInList.get(listIndex++);
+                matrix[i][j] = rotatedDataInList.get(listIndex++);
 
             }
 
@@ -329,68 +369,19 @@ return matrix;
 
         rotatedDataInList.clear();
         //print matrix
-System.out.println("After rotation");
+        System.out.println("After rotation");
         printMatrix(matrix);
 
     }
 
-   void printMatrix(int matrix[][]){
-       for (int i = 0; i <matrix.length ; i++) {
-           for (int j = 0; j < matrix[0].length; j++) {
-            System.out.print(   matrix[i][j]+" ");
+    void printMatrix(int matrix[][]) {
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                System.out.print(matrix[i][j] + " ");
 
-           }
+            }
 
-           System.out.println();
-       }
-   }
-
-    public static void main(String[] args) {
-        int[][] arr={{1,2,3,},
-                     {4,5,6,},
-                     {7,8,9,}
-
-        };
-
-        int[][] arr2={{1,2,3,4},
-                {5,6,7,8},
-                {9,10,11,12},
-                {13,14,15,16}
-
-        };
-
-        int[][] arr3={{1,2,3,4,5},
-                {6,7,8,9,10},
-                {11,12,13,14,15},
-                {16,17,18,19,20},
-                {21,22,23,24,25}
-
-        };
-        int[][] arr4={{1,2,3,4,5,6},
-                {7,8,9,10,11,12},
-                {13,14,15,16,17,18},
-                {19,20,21,22,23,24},
-                {25,26,27,28,29,30},
-                {31,32,33,34,35,36}
-
-        };
-
-        int[][] arr5={{1,2},
-                {3,4},
-
-
-        };
-
-        int[][] arr6={{1,2},
-
-
-
-        };
-
-
-        RotateImage90Degree rotateObject=new RotateImage90Degree();
-       // rotateObject.rotateMatrixBy90(arr);
-       // rotateObject.rotateByCircularMotion(arr);
-        rotateObject.rotateByCircularMotion(arr6);
+            System.out.println();
+        }
     }
 }

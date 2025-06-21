@@ -38,6 +38,38 @@ END
 
  */
 
+    public static void findCountOfDuplicates(String inputString) {
+
+        inputString = inputString.toLowerCase();
+
+
+        HashMap<Character, Integer> characterAndCountInHashmap = new HashMap<>();
+
+        for (char character : inputString.toCharArray()) {
+
+            if (characterAndCountInHashmap.containsKey(character)) {
+                characterAndCountInHashmap.put(character, characterAndCountInHashmap.get(character) + 1);
+            } else {
+                characterAndCountInHashmap.put(character, 1);
+            }
+        }
+
+        characterAndCountInHashmap.forEach((k, v) -> System.out.println("Character:" + k + " Count:" + v));
+
+    }
+
+    public static void main(String[] args) {
+        // findCountOfDuplicates("a");
+        //  System.out.println("Method 2...........................\n");
+        /*
+        **
+         ++
+
+
+         */
+        new PrintCountOfDuplicateCharacters().findDuplicateCharacterCount("a");
+    }
+
     public void findDuplicateCharacterCount(String inputString) {
 
         if (inputString.isEmpty() || inputString == null) {
@@ -72,37 +104,5 @@ END
             }
 
         }
-    }
-
-    public static void findCountOfDuplicates(String inputString) {
-
-        inputString = inputString.toLowerCase();
-
-
-        HashMap<Character, Integer> characterAndCountInHashmap = new HashMap<>();
-
-        for (char character : inputString.toCharArray()) {
-
-            if (characterAndCountInHashmap.containsKey(character)) {
-                characterAndCountInHashmap.put(character, characterAndCountInHashmap.get(character) + 1);
-            } else {
-                characterAndCountInHashmap.put(character, 1);
-            }
-        }
-
-        characterAndCountInHashmap.forEach((k, v) -> System.out.println("Character:" + k + " Count:" + v));
-
-    }
-
-    public static void main(String[] args) {
-        // findCountOfDuplicates("a");
-        //  System.out.println("Method 2...........................\n");
-        /*
-        **
-         ++
-
-
-         */
-        new PrintCountOfDuplicateCharacters().findDuplicateCharacterCount("a");
     }
 }

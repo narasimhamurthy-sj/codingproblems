@@ -31,45 +31,79 @@ Constraints:
 public class SubArraySumEqualsK {
 
 
+    public static void main(String[] args) {
+        SubArraySumEqualsK subArrayCnt = new SubArraySumEqualsK();
+        System.out.println("count:" + subArrayCnt.totalCountOfSubArrayBasedOnSum(new int[]{1, 1, 1}, 2));
 
+        System.out.println("--------------------------------------------------------------");
+        System.out.println("count:" + subArrayCnt.totalCountOfSubArrayBasedOnSum(new int[]{1, 1, 1, 3, 5, 2, 3}, 5));
+        System.out.println("--------------------------------------------------------------");
 
-    public int improvedSolution(int[] inputArray,int k){
-        int sum=0;
-        int subArrayCount=0;
-        HashMap<Integer,Integer> storedSumInMap=new HashMap<>();
+        System.out.println("count:" + subArrayCnt.totalCountOfSubArrayBasedOnSum(new int[]{1, 2, 3, 1, 2, 3, 1, 2, 3}, 6));
+        System.out.println("--------------------------------------------------------------");
+
+        System.out.println("count:" + subArrayCnt.totalCountOfSubArrayBasedOnSum(new int[]{-1, -1, -1, -3, -5, -2, -3}, -5));
+        System.out.println("--------------------------------------------------------------");
+        System.out.println("count:" + subArrayCnt.totalCountOfSubArrayBasedOnSum(new int[]{-1, 1, -1, 5, -5, 0, -3, 3}, 0));
+        System.out.println("--------------------------------------------------------------");
+
+        System.out.println("count:" + subArrayCnt.totalCountOfSubArrayBasedOnSum(new int[]{-4, 1, -1, 5, -5, 1, -3, 3}, 1));
+        System.out.println("--------------------------------------------------------------");
+
+        System.out.println("count:" + subArrayCnt.totalCountOfSubArrayBasedOnSum(new int[]{-4, 1, -1, 5, -5, 1, -3, 3}, 100));
+        System.out.println("--------------------------------------------------------------");
+        System.out.println("count:" + subArrayCnt.totalCountOfSubArrayBasedOnSum(new int[]{2, 2, 2, 2, 2, 2, 2, 2}, 4));
+        System.out.println("--------------------------------------------------------------");
+        System.out.println("count:" + subArrayCnt.totalCountOfSubArrayBasedOnSum(new int[]{2, 4, 2, 2, 2, 6, 4, 2, 4, 2, 2, 2, 2}, 6));
+        System.out.println("--------------------------------------------------------------");
+
+        System.out.println("count:" + subArrayCnt.totalCountOfSubArrayBasedOnSum(new int[]{2, -4, -2, 2, 2, -6, 4, 2, 4, 2, 2, 2, 2}, 6));
+        System.out.println("--------------------------------------------------------------");
+
+        System.out.println("count:" + subArrayCnt.totalCountOfSubArrayBasedOnSum(new int[]{0, 0, 0, 0}, 0));
+        System.out.println("--------------------------------------------------------------");
+        System.out.println("count:" + subArrayCnt.improvedSolution(new int[]{2, -4, -2, 2, 2, -6, 4, 2, 4, 2, 2, 2, 2}, 6));
+
+    }
+
+    public int improvedSolution(int[] inputArray, int k) {
+        int sum = 0;
+        int subArrayCount = 0;
+        HashMap<Integer, Integer> storedSumInMap = new HashMap<>();
         //if sum-k =0, intialize with 0 and frequency with 1 and if sub array found, manage with frequency count
-        storedSumInMap.put(0,1);
+        storedSumInMap.put(0, 1);
 
         //iterate all elements in array
-        for(int arrayElement:inputArray){
-            sum+=arrayElement;
-            if(storedSumInMap.containsKey(sum-k))
+        for (int arrayElement : inputArray) {
+            sum += arrayElement;
+            if (storedSumInMap.containsKey(sum - k))
                 subArrayCount += storedSumInMap.get(sum - k);
-            storedSumInMap.put(sum,storedSumInMap.getOrDefault(sum,0)+1);
+            storedSumInMap.put(sum, storedSumInMap.getOrDefault(sum, 0) + 1);
 
         }
-return subArrayCount;
+        return subArrayCount;
     }
-    public int totalCountOfSubArrayBasedOnSum(int[] inputArray,int k){
 
-        System.out.println("k:"+k);
-        int sum=0;
-        int subArrayCount=0;
-        ArrayList<Integer> subArrayElemets=new ArrayList<>();
-        for (int outerLoopIndex = 0; outerLoopIndex <inputArray.length ; outerLoopIndex++) {
+    public int totalCountOfSubArrayBasedOnSum(int[] inputArray, int k) {
 
-            sum=0;
+        System.out.println("k:" + k);
+        int sum = 0;
+        int subArrayCount = 0;
+        ArrayList<Integer> subArrayElemets = new ArrayList<>();
+        for (int outerLoopIndex = 0; outerLoopIndex < inputArray.length; outerLoopIndex++) {
+
+            sum = 0;
             subArrayElemets.clear();
             for (int innerLopIndex = outerLoopIndex; innerLopIndex < inputArray.length; innerLopIndex++) {
 
-                sum+=inputArray[innerLopIndex];
+                sum += inputArray[innerLopIndex];
                 subArrayElemets.add(inputArray[innerLopIndex]);
-                if(sum==k){
+                if (sum == k) {
                     subArrayCount++;
                     System.out.println(subArrayElemets.toString());
 
 
-                  //  break;
+                    //  break;
                 } /*else if(sum<0  ){
 
                     if(sum<k && k<0){
@@ -88,41 +122,6 @@ return subArrayCount;
         }//ourt loop
 
         return subArrayCount;
-    }
-
-    public static void main(String[] args) {
-        SubArraySumEqualsK subArrayCnt=new SubArraySumEqualsK();
-        System.out.println("count:"+subArrayCnt.totalCountOfSubArrayBasedOnSum(new int[]{1,1,1},2));
-
-        System.out.println("--------------------------------------------------------------");
-        System.out.println("count:"+subArrayCnt.totalCountOfSubArrayBasedOnSum(new int[]{1,1,1,3,5,2,3},5));
-        System.out.println("--------------------------------------------------------------");
-
-        System.out.println("count:"+subArrayCnt.totalCountOfSubArrayBasedOnSum(new int[]{1,2,3,1,2,3,1,2,3},6));
-        System.out.println("--------------------------------------------------------------");
-
-        System.out.println("count:"+subArrayCnt.totalCountOfSubArrayBasedOnSum(new int[]{-1,-1,-1,-3,-5,-2,-3},-5));
-        System.out.println("--------------------------------------------------------------");
-        System.out.println("count:"+subArrayCnt.totalCountOfSubArrayBasedOnSum(new int[]{-1,1,-1,5,-5,0,-3,3},0));
-        System.out.println("--------------------------------------------------------------");
-
-        System.out.println("count:"+subArrayCnt.totalCountOfSubArrayBasedOnSum(new int[]{-4,1,-1,5,-5,1,-3,3},1));
-        System.out.println("--------------------------------------------------------------");
-
-        System.out.println("count:"+subArrayCnt.totalCountOfSubArrayBasedOnSum(new int[]{-4,1,-1,5,-5,1,-3,3},100));
-        System.out.println("--------------------------------------------------------------");
-        System.out.println("count:"+subArrayCnt.totalCountOfSubArrayBasedOnSum(new int[]{2,2,2,2,2,2,2,2},4));
-        System.out.println("--------------------------------------------------------------");
-        System.out.println("count:"+subArrayCnt.totalCountOfSubArrayBasedOnSum(new int[]{2,4,2,2,2,6,4,2,4,2,2,2,2},6));
-        System.out.println("--------------------------------------------------------------");
-
-        System.out.println("count:"+subArrayCnt.totalCountOfSubArrayBasedOnSum(new int[]{2,-4,-2,2,2,-6,4,2,4,2,2,2,2},6));
-        System.out.println("--------------------------------------------------------------");
-
-        System.out.println("count:"+subArrayCnt.totalCountOfSubArrayBasedOnSum(new int[]{0,0,0,0},0));
-        System.out.println("--------------------------------------------------------------");
-        System.out.println("count:"+subArrayCnt.improvedSolution(new int[]{2,-4,-2,2,2,-6,4,2,4,2,2,2,2},6));
-
     }
 /*
 2

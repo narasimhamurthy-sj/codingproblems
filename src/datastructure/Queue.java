@@ -18,6 +18,7 @@ public class Queue {
     static int queueMaxSize = 5;
     static int[] queueArray = new int[queueMaxSize];
     static int currentQueueSize = 0;
+    static int startingIndex = 0;
 
     public static void enQueue(int data) {
         if (currentQueueSize < queueMaxSize) {
@@ -27,17 +28,38 @@ public class Queue {
             System.err.println("Queue is full");
         }
     }
-static int startingIndex=0;
+
     public static void deQueue() {
-       if(!(currentQueueSize<1)) {
-           queueArray[startingIndex] = -1;
-           currentQueueSize--;
-           if(startingIndex<queueArray.length) {
-               startingIndex++;
-           }
-       }else{
-           System.err.println("Queue is Empty");
-       }
+        if (!(currentQueueSize < 1)) {
+            queueArray[startingIndex] = -1;
+            currentQueueSize--;
+            if (startingIndex < queueArray.length) {
+                startingIndex++;
+            }
+        } else {
+            System.err.println("Queue is Empty");
+        }
+
+    }
+
+    public static void printQueue() {
+        Arrays.stream(queueArray).forEach(queueElement -> System.out.println(queueElement));
+    }
+
+    public static void main(String[] args) {
+
+        for (int i = 1; i < 7; i++) {
+            enQueue(i);
+            ;
+
+        }
+        printQueue();
+
+
+        deQueue();
+        System.out.println("After delete:");
+        printQueue();
+
 
     }
 
@@ -48,27 +70,6 @@ static int startingIndex=0;
             System.err.println("Queue is empty");
             return -1;
         }
-    }
-
-    public static void printQueue(){
-        Arrays.stream(queueArray).forEach(queueElement->System.out.println(queueElement));
-    }
-
-    public static void main(String[] args) {
-
-        for (int i = 1; i <7 ; i++) {
-            enQueue(i);;
-
-        }
-        printQueue();
-
-
-
-            deQueue();
-            System.out.println("After delete:");
-            printQueue();
-
-
     }
 
 

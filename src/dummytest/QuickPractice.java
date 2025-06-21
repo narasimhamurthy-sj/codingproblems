@@ -39,9 +39,9 @@ public class QuickPractice {
         }
 
         System.out.println("String array");
-        String str[]={"abc","c","d"};
-        ArrayList alist=new ArrayList<>(Arrays.asList(str));
-        alist.forEach(el->System.out.println(el));
+        String str[] = {"abc", "c", "d"};
+        ArrayList alist = new ArrayList<>(Arrays.asList(str));
+        alist.forEach(el -> System.out.println(el));
 
         //Regular exp
         System.out.println("Regular exp");
@@ -57,19 +57,19 @@ public class QuickPractice {
         }
         System.out.print("cnt:" + cnt);
 
-System.out.println("Hash Set printing");
+        System.out.println("Hash Set printing");
 
-        HashSet<Integer> set=new HashSet<>();
+        HashSet<Integer> set = new HashSet<>();
         set.add(1);
         set.add(2);
 
-        for(Integer elment:set){
+        for (Integer elment : set) {
             System.out.println(elment);
         }
 
         //or
-        Iterator<Integer> itr=set.iterator();
-        while(itr.hasNext()){
+        Iterator<Integer> itr = set.iterator();
+        while (itr.hasNext()) {
             System.out.println(itr.next());
         }
     }

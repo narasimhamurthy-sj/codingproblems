@@ -46,8 +46,8 @@ dbc,dcb
  */
 public class PermutationOfAString {
 
-    static ArrayList<String> finalStringList = new ArrayList<>();
     public static String excludedCharFromSubStr = "";
+    static ArrayList<String> finalStringList = new ArrayList<>();
 
     //abcd
     //bcda, acdb,abdc,abcd
@@ -61,7 +61,6 @@ public class PermutationOfAString {
         char characterToBePlacedatTheEnd;
         char ch;
         int count = 0;
-
 
 
         list.add(str);
@@ -101,81 +100,73 @@ bcd,bdc         abcde
         String stringSentForsublevelPermutation = "";
         String swappedString;
         String lastStrFromList = "";
-        String strToaddInList="";
+        String strToaddInList = "";
 
         if (str.length() <= 2) {
             System.out.println("can't form sub string");
             return;
         }
 
-        stringSentForsublevelPermutation=str.substring(1);
+        stringSentForsublevelPermutation = str.substring(1);
         subStrPermutationsInList = subLevelPermutation(subStrPermutationsInList, str);
 
-            while (subStrPermutationsInList.size() != 0) {
+        while (subStrPermutationsInList.size() != 0) {
 
-                lastStrFromList = subStrPermutationsInList.getLast();
-                if (lastStrFromList.length() <= 3) {
+            lastStrFromList = subStrPermutationsInList.getLast();
+            if (lastStrFromList.length() <= 3) {
 
-                    strToaddInList=excludedCharFromSubStr + lastStrFromList;
-                    finalStringList.add(strToaddInList);
-                    swappedString = swap(lastStrFromList.substring(1));
-                    // System.out.print(excludedCharFromSubStr+strFromList.charAt(0)+swappedString+"  ");
-                    strToaddInList=excludedCharFromSubStr +String.valueOf(lastStrFromList.charAt(0)) + swappedString;
-                    finalStringList.add(strToaddInList);
-                    //delete
-                    subStrPermutationsInList.remove(subStrPermutationsInList.removeLast());
+                strToaddInList = excludedCharFromSubStr + lastStrFromList;
+                finalStringList.add(strToaddInList);
+                swappedString = swap(lastStrFromList.substring(1));
+                // System.out.print(excludedCharFromSubStr+strFromList.charAt(0)+swappedString+"  ");
+                strToaddInList = excludedCharFromSubStr + String.valueOf(lastStrFromList.charAt(0)) + swappedString;
+                finalStringList.add(strToaddInList);
+                //delete
+                subStrPermutationsInList.remove(subStrPermutationsInList.removeLast());
 
-                }
-
-               else if(lastStrFromList.length()>3){
-                    subStrPermutationsInList.remove(stringSentForsublevelPermutation);
-                    excludedCharFromSubStr= excludedCharFromSubStr.replace(String.valueOf(stringSentForsublevelPermutation.charAt(0)),"");
-                    stringSentForsublevelPermutation=lastStrFromList;
-                    excludedCharFromSubStr+=stringSentForsublevelPermutation.charAt(0);
-                    subStrPermutationsInList = subLevelPermutation(subStrPermutationsInList, stringSentForsublevelPermutation);
-                }
-
-
+            } else if (lastStrFromList.length() > 3) {
+                subStrPermutationsInList.remove(stringSentForsublevelPermutation);
+                excludedCharFromSubStr = excludedCharFromSubStr.replace(String.valueOf(stringSentForsublevelPermutation.charAt(0)), "");
+                stringSentForsublevelPermutation = lastStrFromList;
+                excludedCharFromSubStr += stringSentForsublevelPermutation.charAt(0);
+                subStrPermutationsInList = subLevelPermutation(subStrPermutationsInList, stringSentForsublevelPermutation);
             }
 
 
-
+        }
 
 
     }
 
 
+    public static String swap(String str) {
+        String swappedStr = "";
+        String firstChar = String.valueOf(str.charAt(0));
+        String secondChar = String.valueOf(str.charAt(1));
+        swappedStr += secondChar + firstChar;
+        return swappedStr;
+    }
 
 
+    public static void findPermutaions(String inputString) {
 
-public static String swap(String str) {
-    String swappedStr = "";
-    String firstChar =String.valueOf( str.charAt(0));
-    String secondChar =String.valueOf( str.charAt(1));
-    swappedStr += secondChar + firstChar;
-    return swappedStr;
-}
+        ArrayList<String> stringPermutationsInList = new ArrayList<>();
+        stringPermutationsInList = constructPermutations(stringPermutationsInList, inputString);
+        stringPermutationsInList.forEach(str -> subStringPermutation(str));
+        //subStringPermutation("abcd");
 
 
-public static void findPermutaions(String inputString) {
-
-    ArrayList<String> stringPermutationsInList = new ArrayList<>();
-    stringPermutationsInList = constructPermutations(stringPermutationsInList, inputString);
-    stringPermutationsInList.forEach(str->subStringPermutation(str));
-    //subStringPermutation("abcd");
+    }
 
 
-}
-
-
-    public static ArrayList<String> subLevelPermutation(ArrayList<String> list, String str){
+    public static ArrayList<String> subLevelPermutation(ArrayList<String> list, String str) {
 
         String subStr;
-        excludedCharFromSubStr="";
+        excludedCharFromSubStr = "";
 
-        if(str.length()<=3){
+        if (str.length() <= 3) {
             list.add(str);
-        }else {
+        } else {
             for (int i = 1; i < str.length() - 2; i++) {
                 excludedCharFromSubStr += str.charAt(i - 1);
                 subStr = str.substring(i);
@@ -184,23 +175,18 @@ public static void findPermutaions(String inputString) {
                 }
             }
         }
-            return list;
-        }
+        return list;
+    }
 
 
+    public static void main(String[] args) {
+        findPermutaions("abcde");
+
+        System.out.println(finalStringList.size());
+        finalStringList.forEach(el -> System.out.print(el + "  "));
 
 
-
-public static void main(String[] args) {
-    findPermutaions("abcde");
-
-   System.out.println( finalStringList.size());
-   finalStringList.forEach(el->System.out.print(el+"  "));
-
-
-}
-
-
+    }
 
 
 }

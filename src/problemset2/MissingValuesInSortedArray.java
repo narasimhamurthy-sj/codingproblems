@@ -1,7 +1,7 @@
 package problemset2;
 /*
 {1,2,3,4,5}
--- Take clarify whether it will be inascending or descending oreder of sorting
+-- Take clarify whether it will be in ascending or descending order of sorting
 1. {1,5,7,8}
 2. {8,12,16}
 3. -ve num
@@ -106,9 +106,9 @@ public class MissingValuesInSortedArray {
     }
 
     public static void main(String[] args) {
-       // printMissingNumbersInArray(new int[]{-50, -1, 10, 11});
+        // printMissingNumbersInArray(new int[]{-50, -1, 10, 11});
 
-      //  System.out.println(oneMissingElementInArray(new int[]{1,2,4}));
+        //  System.out.println(oneMissingElementInArray(new int[]{1,2,4}));
 
 
 
@@ -122,18 +122,18 @@ public class MissingValuesInSortedArray {
        */
 
 
-        Scanner input=new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
 
         System.out.println("Enter number");
-        BigInteger num=input.nextBigInteger();
+        BigInteger num = input.nextBigInteger();
 
-       // int num=121345;
-        String str=String.valueOf(num);
-        System.out.println("length:"+str.length());
+        // int num=121345;
+        String str = String.valueOf(num);
+        System.out.println("length:" + str.length());
         str.matches("1");
-        Matcher match=Pattern.compile("1").matcher(str);
+        Matcher match = Pattern.compile("1").matcher(str);
 
-        while(match.find()){
+        while (match.find()) {
             System.out.println(match.group());
         }
     }

@@ -35,14 +35,14 @@ public class BinaryTreeOperations {
         BinarySearchTree.Node currentNode = null;
         BinarySearchTree.Node tempNode = null;
         BinarySearchTree.Node childNodeLeft = null;
-        Boolean isDeletableNodeAvailable=false;
+        Boolean isDeletableNodeAvailable = false;
         if (node == null) {
             System.out.println("Empty tree");
             return null;
         }
         if (rootNode.data == deleteNodeData) {
 
-            isDeletableNodeAvailable=true;
+            isDeletableNodeAvailable = true;
             //Single node
             if (rootNode.leftChild == null && rootNode.rightChild == null) {
                 rootNode = null;
@@ -84,7 +84,7 @@ public class BinaryTreeOperations {
                 if (currentNode.data == deleteNodeData) {
 
                     System.out.println("Found delatable node:" + currentNode.data);
-                    isDeletableNodeAvailable=true;
+                    isDeletableNodeAvailable = true;
                     rightNode = currentNode.rightChild;
                     leftNode = currentNode.leftChild;
                     //leaf node deletion
@@ -97,12 +97,12 @@ public class BinaryTreeOperations {
                         } else {
                             parentNode.leftChild = null;
                         }
-                       // break;
+                        // break;
                     } else if (currentNode.leftChild == null && currentNode.rightChild != null) {    //left child is obsent and right child is present is deletablenode is right of it's parent node
                         if (parentNode.rightChild == currentNode) {
                             parentNode.rightChild = rightNode;
                             //removing reference for deleted node
-                            currentNode.rightChild=null;
+                            currentNode.rightChild = null;
                         } else {  //is deletablenode  left of it's parent node        (parentNode.leftChild==currentNode)
                             parentNode.leftChild = rightNode;
                         }
@@ -114,7 +114,7 @@ public class BinaryTreeOperations {
 
                         } else {  //is deletablenode  left of it's parent node        (parentNode.leftChild==currentNode)
                             parentNode.leftChild = leftNode;
-                            currentNode.leftChild=null;
+                            currentNode.leftChild = null;
                         }
                         //break;
                     } else {
@@ -127,10 +127,10 @@ public class BinaryTreeOperations {
                             rightNode.leftChild = leftNode;
                         } else {
 
-                            if(currentNode==parentNode.rightChild) {
+                            if (currentNode == parentNode.rightChild) {
                                 //Re-assigning parent node right child to deletable node right child
                                 parentNode.rightChild = rightNode;
-                            }else{
+                            } else {
                                 parentNode.leftChild = rightNode;
                             }
                             //As we are deleting node,set deltable left and right child as null
@@ -172,9 +172,9 @@ public class BinaryTreeOperations {
 
         }
 
-        if(!isDeletableNodeAvailable){
-           System.out.println("Given node not found");
-        }else{
+        if (!isDeletableNodeAvailable) {
+            System.out.println("Given node not found");
+        } else {
 
             System.out.println("Given node is deleted");
         }

@@ -78,6 +78,42 @@ public class FindLargestNumLessThanGivnNum {
 
    */
 
+    public static void main(String[] args) {
+        FindLargestNumLessThanGivnNum lrgstNum = new FindLargestNumLessThanGivnNum();
+       /* lrgstNum.findNearestLargerNumberBasedOnDigitD(145,4);
+        lrgstNum.findNearestLargerNumberBasedOnDigitD(1200,0);
+        lrgstNum.findNearestLargerNumberBasedOnDigitD(1862,2);
+        lrgstNum.findNearestLargerNumberBasedOnDigitD(2862,2);
+        lrgstNum.findNearestLargerNumberBasedOnDigitD(9999,9);
+        lrgstNum.findNearestLargerNumberBasedOnDigitD(1,1);
+        lrgstNum.findNearestLargerNumberBasedOnDigitD(22,2);
+        lrgstNum.findNearestLargerNumberBasedOnDigitD(27,2);
+        lrgstNum.findNearestLargerNumberBasedOnDigitD(27,7);
+        lrgstNum.findNearestLargerNumberBasedOnDigitD(193,9);
+         lrgstNum.findNearestLargerNumberBasedOnDigitD(98765321,8);
+        lrgstNum.findNearestLargerNumberBasedOnDigitD(98765555,5);
+        lrgstNum.findNearestLargerNumberBasedOnDigitD(0,0);
+        lrgstNum.findNearestLargerNumberBasedOnDigitD(98765555,4);
+        lrgstNum.findNearestLargerNumberBasedOnDigitD(92,9);
+        lrgstNum.findNearestLargerNumberBasedOnDigitD(15,5);
+        lrgstNum.findNearestLargerNumberBasedOnDigitD(298,8);
+ lrgstNum.findNearestLargerNumberBasedOnDigitD(906,9);
+ lrgstNum.findNearestLargerNumberBasedOnDigitD(00004,0);
+  lrgstNum.findNearestLargerNumberBasedOnDigitD(40000,0);
+  lrgstNum.findNearestLargerNumberBasedOnDigitD(5000001,0);
+    //random positions d=9
+        lrgstNum.findNearestLargerNumberBasedOnDigitD(9897969,9);
+  //All starting digits same but ending with different digit
+        lrgstNum.findNearestLargerNumberBasedOnDigitD(66661,6);
+
+        */
+
+        //All starting digits same but ending with different digit
+        lrgstNum.findNearestLargerNumberBasedOnDigitD(66661, 6);
+
+
+    }
+
     public int subtractNumBasedOnPosition(int largestNum, int digitPosition) {
         switch (digitPosition) {
             case 1:
@@ -109,27 +145,7 @@ public class FindLargestNumLessThanGivnNum {
                 break;
 
 
-
         }
-        return largestNum;
-    }
-
-    public int findLargestNumber(int num, int d) {
-
-        int largestNum = num, digitPosition = 1;
-        int remainder;
-        while (num > 0) {
-
-            remainder = num % 10;
-            if (remainder == d) {
-
-                largestNum=subtractNumBasedOnPosition(largestNum,digitPosition);
-            }
-            num = num / 10;
-            digitPosition++;
-        }
-
-        System.out.println("largestNum:"+largestNum);
         return largestNum;
     }
 
@@ -177,93 +193,70 @@ public class FindLargestNumLessThanGivnNum {
     //---------------------------
      */
 
+    public int findLargestNumber(int num, int d) {
 
-    public int findNearestLargerNumberBasedOnDigitD(int num,int d){
+        int largestNum = num, digitPosition = 1;
+        int remainder;
+        while (num > 0) {
+
+            remainder = num % 10;
+            if (remainder == d) {
+
+                largestNum = subtractNumBasedOnPosition(largestNum, digitPosition);
+            }
+            num = num / 10;
+            digitPosition++;
+        }
+
+        System.out.println("largestNum:" + largestNum);
+        return largestNum;
+    }
+
+    public int findNearestLargerNumberBasedOnDigitD(int num, int d) {
 
 
-        String numStr=String.valueOf(num);
-        int largestNum=num,remainingDigitInteger;
-        String strD=String.valueOf(d);
-        boolean isDPresent=false;
+        String numStr = String.valueOf(num);
+        int largestNum = num, remainingDigitInteger;
+        String strD = String.valueOf(d);
+        boolean isDPresent = false;
         String remainingDigitStr;
-        if(numStr.contains(strD)){
-            int dIndex=numStr.indexOf(strD);
+        if (numStr.contains(strD)) {
+            int dIndex = numStr.indexOf(strD);
 
 
-            isDPresent=true;
-            while(isDPresent){
+            isDPresent = true;
+            while (isDPresent) {
 
-                if((dIndex+1)<numStr.length()){
-                    remainingDigitStr=numStr.substring(dIndex+1);
-                }else{
-                    remainingDigitStr="0";
+                if ((dIndex + 1) < numStr.length()) {
+                    remainingDigitStr = numStr.substring(dIndex + 1);
+                } else {
+                    remainingDigitStr = "0";
                 }
-                remainingDigitInteger=Integer.parseInt(remainingDigitStr);
+                remainingDigitInteger = Integer.parseInt(remainingDigitStr);
 
-                largestNum=largestNum-(remainingDigitInteger+1);
+                largestNum = largestNum - (remainingDigitInteger + 1);
 
 
-                if(String.valueOf(largestNum).contains(strD)){
-                    isDPresent=true;
-                    dIndex=String.valueOf(largestNum).indexOf(strD);
-                    numStr=String.valueOf(largestNum);
-                }else{
+                if (String.valueOf(largestNum).contains(strD)) {
+                    isDPresent = true;
+                    dIndex = String.valueOf(largestNum).indexOf(strD);
+                    numStr = String.valueOf(largestNum);
+                } else {
 
-                    isDPresent=false;
+                    isDPresent = false;
                 }
 
 
             }//end of while
 
 
-
-        }else{
-            System.out.println( "Given num doesn't have D and no need to find largest num");
+        } else {
+            System.out.println("Given num doesn't have D and no need to find largest num");
         }
 
 
-        System.out.println("largestNum:"+largestNum);
+        System.out.println("largestNum:" + largestNum);
         return largestNum;
-
-    }
-
-    public static void main(String[] args) {
-        FindLargestNumLessThanGivnNum lrgstNum=new FindLargestNumLessThanGivnNum();
-       /* lrgstNum.findNearestLargerNumberBasedOnDigitD(145,4);
-        lrgstNum.findNearestLargerNumberBasedOnDigitD(1200,0);
-        lrgstNum.findNearestLargerNumberBasedOnDigitD(1862,2);
-        lrgstNum.findNearestLargerNumberBasedOnDigitD(2862,2);
-        lrgstNum.findNearestLargerNumberBasedOnDigitD(9999,9);
-        lrgstNum.findNearestLargerNumberBasedOnDigitD(1,1);
-        lrgstNum.findNearestLargerNumberBasedOnDigitD(22,2);
-        lrgstNum.findNearestLargerNumberBasedOnDigitD(27,2);
-        lrgstNum.findNearestLargerNumberBasedOnDigitD(27,7);
-        lrgstNum.findNearestLargerNumberBasedOnDigitD(193,9);
-         lrgstNum.findNearestLargerNumberBasedOnDigitD(98765321,8);
-        lrgstNum.findNearestLargerNumberBasedOnDigitD(98765555,5);
-        lrgstNum.findNearestLargerNumberBasedOnDigitD(0,0);
-        lrgstNum.findNearestLargerNumberBasedOnDigitD(98765555,4);
-        lrgstNum.findNearestLargerNumberBasedOnDigitD(92,9);
-        lrgstNum.findNearestLargerNumberBasedOnDigitD(15,5);
-        lrgstNum.findNearestLargerNumberBasedOnDigitD(298,8);
- lrgstNum.findNearestLargerNumberBasedOnDigitD(906,9);
- lrgstNum.findNearestLargerNumberBasedOnDigitD(00004,0);
-  lrgstNum.findNearestLargerNumberBasedOnDigitD(40000,0);
-  lrgstNum.findNearestLargerNumberBasedOnDigitD(5000001,0);
-    //random positions d=9
-        lrgstNum.findNearestLargerNumberBasedOnDigitD(9897969,9);
-  //All starting digits same but ending with different digit
-        lrgstNum.findNearestLargerNumberBasedOnDigitD(66661,6);
-
-        */
-
-        //All starting digits same but ending with different digit
-        lrgstNum.findNearestLargerNumberBasedOnDigitD(66661,6);
-
-
-
-
-
 
     }
 }

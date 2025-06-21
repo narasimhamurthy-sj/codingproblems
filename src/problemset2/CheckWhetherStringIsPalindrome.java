@@ -18,38 +18,38 @@ package problemset2;
 public class CheckWhetherStringIsPalindrome {
 
 
-    public static boolean isStringPalindrome(String inputString){
+    public static boolean isStringPalindrome(String inputString) {
 
         String stringBeforeMidElement;
         String stringAfterMidElement;
-        boolean isPalindrome=false;
+        boolean isPalindrome = false;
         int midIndexOfString;
-        if(inputString.isEmpty() || inputString==null){
+        if (inputString.isEmpty() || inputString == null) {
             System.err.println("String doesn't have characters");
             return false;
         }
-        inputString=inputString.trim();
-        if(inputString.length()==1){
+        inputString = inputString.trim();
+        if (inputString.length() == 1) {
             System.out.println("Single character");
             return true;
         }
 
 
-        midIndexOfString=(inputString.length()-1)/2;
-        stringAfterMidElement=inputString.substring(midIndexOfString+1);
-        if((inputString.length()%2)!=0){
-            stringBeforeMidElement=inputString.substring(0,midIndexOfString);
-            System.out.println("stringBeforeMidElement:"+stringBeforeMidElement);
-        }else{
-            stringBeforeMidElement=inputString.substring(0,midIndexOfString+1);
-            System.out.println("stringBeforeMidElement:"+stringBeforeMidElement);
+        midIndexOfString = (inputString.length() - 1) / 2;
+        stringAfterMidElement = inputString.substring(midIndexOfString + 1);
+        if ((inputString.length() % 2) != 0) {
+            stringBeforeMidElement = inputString.substring(0, midIndexOfString);
+            System.out.println("stringBeforeMidElement:" + stringBeforeMidElement);
+        } else {
+            stringBeforeMidElement = inputString.substring(0, midIndexOfString + 1);
+            System.out.println("stringBeforeMidElement:" + stringBeforeMidElement);
         }
 
-        if(stringBeforeMidElement.equalsIgnoreCase(stringAfterMidElement)){
+        if (stringBeforeMidElement.equalsIgnoreCase(stringAfterMidElement)) {
             System.out.println("Calling without reverse func");
-            isPalindrome= true;
-        }else {
-            System.out.println("String before reverse:"+stringAfterMidElement);
+            isPalindrome = true;
+        } else {
+            System.out.println("String before reverse:" + stringAfterMidElement);
 
             return stringBeforeMidElement.equalsIgnoreCase(ReverseAString.reverseString(stringAfterMidElement));
         }
@@ -60,6 +60,6 @@ public class CheckWhetherStringIsPalindrome {
 
     public static void main(String[] args) {
 
-      System.out.println(isStringPalindrome("12321"));
+        System.out.println(isStringPalindrome("12321"));
     }
 }

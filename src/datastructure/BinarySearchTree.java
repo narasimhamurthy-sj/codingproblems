@@ -8,36 +8,36 @@ public class BinarySearchTree {
     static Node root;
 
 
-    public static Node insertElementsIntoNonBST(int data){
-       // System.out.println("insertElementsIntoNonBST");
-        ArrayList<Node> nodesList=new ArrayList<>();
-        int countOfCompleteTree=0;
-        Node leftChild=null;
-        Node rightChild=null;
+    public static Node insertElementsIntoNonBST(int data) {
+        // System.out.println("insertElementsIntoNonBST");
+        ArrayList<Node> nodesList = new ArrayList<>();
+        int countOfCompleteTree = 0;
+        Node leftChild = null;
+        Node rightChild = null;
 
-        if (root==null){
-            root=new Node(data);
+        if (root == null) {
+            root = new Node(data);
             return root;
-        }else{
+        } else {
             Node curNode;
             nodesList.add(root);
-            while(true){
+            while (true) {
 
-                curNode=nodesList.get(countOfCompleteTree);
+                curNode = nodesList.get(countOfCompleteTree);
                 //check left child is empty
-                if(curNode.leftChild==null){
-                    curNode.leftChild=new Node(data);
+                if (curNode.leftChild == null) {
+                    curNode.leftChild = new Node(data);
                     return root;
-                }else{
-                    leftChild=curNode.leftChild;
+                } else {
+                    leftChild = curNode.leftChild;
                     nodesList.add(leftChild);
                 }
-        //check right child is empty
-                if(curNode.rightChild==null){
-                    curNode.rightChild=new Node(data);
+                //check right child is empty
+                if (curNode.rightChild == null) {
+                    curNode.rightChild = new Node(data);
                     return root;
-                }else{
-                    rightChild=curNode.rightChild;
+                } else {
+                    rightChild = curNode.rightChild;
                     nodesList.add(rightChild);
                     countOfCompleteTree++;
                 }
@@ -47,12 +47,7 @@ public class BinarySearchTree {
         }
 
 
-
-
-
-
     }
-
 
 
     public static Node inserElementIntoBinaryTree(int data) {
@@ -117,8 +112,6 @@ public class BinarySearchTree {
         System.out.print(node.data + "   ");
 
     }
-
-
 
 
     /* JAVA code
@@ -189,10 +182,10 @@ PSEUDO STEPS:
 
     public static void main(String[] args) {
 
-     //   int[] arr = new int[]{10, 5, 20, 3, 8, 15, 25, 1, 9, 13, 30};
+        //   int[] arr = new int[]{10, 5, 20, 3, 8, 15, 25, 1, 9, 13, 30};
 
         //int[] arr = new int[]{20, 10, 40, 5,  15, 30, 50, 3, 18};
-        int[] arr = new int[]{500,400,600,350,450,550,700,300,430,470,370,440,460,435,445};
+        int[] arr = new int[]{500, 400, 600, 350, 450, 550, 700, 300, 430, 470, 370, 440, 460, 435, 445};
         for (int i = 0; i < arr.length; i++) {
             inserElementIntoBinaryTree(arr[i]);
         }
@@ -206,7 +199,7 @@ PSEUDO STEPS:
         postOrderTraversal(root);
 */
         System.out.println(" \n printLevelOrder");
-       //  printLevelOrder(root);
+        //  printLevelOrder(root);
         new BinarySearchTree().printLevelOrderInRecursive(root);
         /*//Search
         System.out.println(" \n Search key: 15");
@@ -224,25 +217,25 @@ PSEUDO STEPS:
 */
 
 
-       // new BinarySearchTree().printLevelOrderInRecursive(BinaryTreeOperations.deleteNodeIterative(root,20));
-      //  new BinarySearchTree().printLevelOrderInRecursive(BinaryTreeOperations.deleteNodeIterative(root,40));
+        // new BinarySearchTree().printLevelOrderInRecursive(BinaryTreeOperations.deleteNodeIterative(root,20));
+        //  new BinarySearchTree().printLevelOrderInRecursive(BinaryTreeOperations.deleteNodeIterative(root,40));
         //new BinarySearchTree().printLevelOrderInRecursive(BinaryTreeOperations.deleteNodeIterative(root,10));
-      //  new BinarySearchTree().printLevelOrderInRecursive(BinaryTreeOperations.deleteNodeIterative(root,3));
-      //  new BinarySearchTree().printLevelOrderInRecursive(BinaryTreeOperations.deleteNodeIterative(root,15));
+        //  new BinarySearchTree().printLevelOrderInRecursive(BinaryTreeOperations.deleteNodeIterative(root,3));
+        //  new BinarySearchTree().printLevelOrderInRecursive(BinaryTreeOperations.deleteNodeIterative(root,15));
 
         //new BinarySearchTree().printLevelOrderInRecursive(BinaryTreeOperations.deleteNodeIterative(root,18));
         //new BinarySearchTree().printLevelOrderInRecursive(BinaryTreeOperations.deleteNodeIterative(root,30));
-     //   new BinarySearchTree().printLevelOrderInRecursive(BinaryTreeOperations.deleteNodeIterative(root,50));
-      //  new BinarySearchTree().printLevelOrderInRecursive(BinaryTreeOperations.deleteNodeIterative(root,880));
+        //   new BinarySearchTree().printLevelOrderInRecursive(BinaryTreeOperations.deleteNodeIterative(root,50));
+        //  new BinarySearchTree().printLevelOrderInRecursive(BinaryTreeOperations.deleteNodeIterative(root,880));
 
 
-         //LowestCommonAncestor.findLowestCommonAncestor(root,435,445);
+        //LowestCommonAncestor.findLowestCommonAncestor(root,435,445);
         //LowestCommonAncestor.findLowestCommonAncestor(root,500,600);
         //LowestCommonAncestor.findLowestCommonAncestor(root,400,600);
-       // LowestCommonAncestor.findLowestCommonAncestor(root,350,550);
-       // LowestCommonAncestor.findLowestCommonAncestor(root,370,460);
-       // LowestCommonAncestor.findLowestCommonAncestor(root,435,700);
-        LowestCommonAncestor.findLowestCommonAncestor(root,450,435);
+        // LowestCommonAncestor.findLowestCommonAncestor(root,350,550);
+        // LowestCommonAncestor.findLowestCommonAncestor(root,370,460);
+        // LowestCommonAncestor.findLowestCommonAncestor(root,435,700);
+        LowestCommonAncestor.findLowestCommonAncestor(root, 450, 435);
 
     }
 

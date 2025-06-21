@@ -38,20 +38,20 @@ Take  element in array by index one by one,
 
 
      */
-    public static int[] calculateTwoSum(int[] inputArray,int target){
+    public static int[] calculateTwoSum(int[] inputArray, int target) {
 
-        int[]  twoSumIndicies={};
+        int[] twoSumIndicies = {};
         for (int i = 0; i < inputArray.length; i++) {
 
-            if(inputArray[i]<0 || inputArray[i]<target){
+            if (inputArray[i] < 0 || inputArray[i] < target) {
 
-                for (int j = i+1; j < inputArray.length; j++) {
+                for (int j = i + 1; j < inputArray.length; j++) {
 
-                    if(inputArray[j]<0 || inputArray[j]<target){
+                    if (inputArray[j] < 0 || inputArray[j] < target) {
 
-                        if(target==inputArray[i]+inputArray[j]){
-                            System.out.println("found at indicies- i:"+i+" j:"+j);
-                            return twoSumIndicies=new int[] {i,j};
+                        if (target == inputArray[i] + inputArray[j]) {
+                            System.out.println("found at indicies- i:" + i + " j:" + j);
+                            return twoSumIndicies = new int[]{i, j};
                         }
                     }
 
@@ -60,7 +60,7 @@ Take  element in array by index one by one,
 
         }
 
-        if(twoSumIndicies.length==0){
+        if (twoSumIndicies.length == 0) {
             System.out.println("Two sum indicies doesn't exist");
         }
 
@@ -68,28 +68,28 @@ Take  element in array by index one by one,
     }
 
 
-
     public static int[] simpleApproach(int[] inputArray, int target) throws Exception {
 
-        HashMap<Integer,Integer> storeArrayData=new HashMap<>();
+        HashMap<Integer, Integer> storeArrayData = new HashMap<>();
 
         int complement;
         for (int i = 0; i < inputArray.length; i++) {
 
-            complement=target-inputArray[i];
+            complement = target - inputArray[i];
 
-            if(storeArrayData.containsKey(complement)){
+            if (storeArrayData.containsKey(complement)) {
 
-                return new int[]{storeArrayData.get(complement),i};
+                return new int[]{storeArrayData.get(complement), i};
             }
 
-            storeArrayData.put(inputArray[i],i);
+            storeArrayData.put(inputArray[i], i);
 
         }
 
 
         throw new Exception("Two sum indicied doesn't exist");
     }
+
     public static void main(String[] args) throws Exception {
 /*
 4. sum doesn't exist
@@ -106,6 +106,6 @@ Take  element in array by index one by one,
  */
 
 
-        Arrays.stream(simpleApproach(new int[]{2,3,0,-4,9,9,-4},-8)).forEach(arrayElement->System.out.println(arrayElement));
+        Arrays.stream(simpleApproach(new int[]{2, 3, 0, -4, 9, 9, -4}, -8)).forEach(arrayElement -> System.out.println(arrayElement));
     }
 }

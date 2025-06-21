@@ -41,86 +41,78 @@ public class FindMidNodeInLLWhenCountIsUnknown {
     4. END
 */
 
-public static Node findMidNode(Node head){
-    Node p1Node,p2Node,temporaryMidNode=null,temporaryMidNode2=null;
-    int currentIterationPosition, p1NodePosition,p2NodePosition;
-    p1Node=head;
-    p2Node=head;
-    currentIterationPosition=1;
-    p1NodePosition=1;
-    p2NodePosition=2;
-    int p1nodeNextPos=1;
-    while(p2Node!=null){
+    public static Node findMidNode(Node head) {
+        Node p1Node, p2Node, temporaryMidNode = null, temporaryMidNode2 = null;
+        int currentIterationPosition, p1NodePosition, p2NodePosition;
+        p1Node = head;
+        p2Node = head;
+        currentIterationPosition = 1;
+        p1NodePosition = 1;
+        p2NodePosition = 2;
+        int p1nodeNextPos = 1;
+        while (p2Node != null) {
 
-       // p1nodeNextPos=p1nodeNextPos*2;
-        if(currentIterationPosition==(p1NodePosition*2)){
-            if(currentIterationPosition==((p2NodePosition*2))){
-                temporaryMidNode2=p2Node;
-            }else{
-                temporaryMidNode=p2Node;
+            // p1nodeNextPos=p1nodeNextPos*2;
+            if (currentIterationPosition == (p1NodePosition * 2)) {
+                if (currentIterationPosition == ((p2NodePosition * 2))) {
+                    temporaryMidNode2 = p2Node;
+                } else {
+                    temporaryMidNode = p2Node;
+                }
+                p1NodePosition = p1NodePosition * 2;
             }
-            p1NodePosition=p1NodePosition*2;
+            if (currentIterationPosition == ((p2NodePosition * 2))) {//&& (p2Node.link!=null)
+
+
+                p1Node = temporaryMidNode;
+                p2NodePosition = p2NodePosition * 2;
+                temporaryMidNode = temporaryMidNode2;
+
+            }
+            p2Node = p2Node.link;
+            currentIterationPosition++;
         }
-        if (currentIterationPosition==((p2NodePosition*2)) ){//&& (p2Node.link!=null)
 
-
-            p1Node=temporaryMidNode;
-            p2NodePosition=p2NodePosition*2;
-            temporaryMidNode=temporaryMidNode2;
-
+        System.out.println("\n P2 Node Position:" + p2NodePosition);
+        System.out.println("Mid Node Position:" + p1NodePosition);
+        System.out.println(" Total Nodes:" + (currentIterationPosition - 1));
+        if ((currentIterationPosition - 1) % 2 == 0) {
+            System.out.println(" Mid node:" + p1Node.info);
+        } else {
+            p1Node = p1Node.link;
+            System.out.println(" Mid node:" + p1Node.info);
         }
-        p2Node=p2Node.link;
-        currentIterationPosition++;
+        return p1Node;
+
     }
 
-    System.out.println("\n P2 Node Position:" + p2NodePosition);
-    System.out.println("Mid Node Position:" + p1NodePosition);
-    System.out.println(" Total Nodes:" + (currentIterationPosition-1));
-    if((currentIterationPosition-1)%2==0) {
-        System.out.println(" Mid node:" + p1Node.info);
-    }else{
-        p1Node=p1Node.link;
-        System.out.println(" Mid node:" + p1Node.info);
-    }
-    return p1Node;
 
-}
+    public static void midNode(FindIntersectionNodeInLL.Node linkedList) {
 
+        FindIntersectionNodeInLL.Node pointer1 = linkedList;
+        FindIntersectionNodeInLL.Node pointer2 = linkedList;
 
+        while (pointer2.link != null) {
 
-
-
-
-
-
-
-
-    public static void midNode(FindIntersectionNodeInLL.Node linkedList){
-
-        FindIntersectionNodeInLL.Node pointer1=linkedList;
-        FindIntersectionNodeInLL.Node pointer2=linkedList;
-
-        while(pointer2.link!=null){
-
-            pointer1=pointer1.link;
-            if(pointer2.link.link==null) {
+            pointer1 = pointer1.link;
+            if (pointer2.link.link == null) {
                 break;
 
-            }else{
+            } else {
                 pointer2 = pointer2.link.link;
             }
 
         }
 
-        System.out.println("\n Mid Node: "+pointer1.info);
+        System.out.println("\n Mid Node: " + pointer1.info);
     }
 
     public static void main(String[] args) {
-        FindIntersectionNodeInLL.Node list1= FindIntersectionNodeInLL.createLL(100);
+        FindIntersectionNodeInLL.Node list1 = FindIntersectionNodeInLL.createLL(100);
         FindIntersectionNodeInLL.printLL(list1);
         midNode(list1);
 
-      //  Node.createLL(5);
+        //  Node.createLL(5);
        /* Node ll=Node.createLL(14);
         System.out.println("\n List: ");
         Node.printLL(ll);

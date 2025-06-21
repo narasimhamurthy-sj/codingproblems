@@ -1,6 +1,8 @@
 package problemset3;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 /*
 Str="Animal"
 
@@ -21,35 +23,35 @@ str2=iaanlm
  */
 public class CheckWhetherAnagram {
 
-    public static String matchPattern(String str){
-        String matchedString="";
-        Matcher match= Pattern.compile("[a-zA-Z0-9]+").matcher(str);
-        while(match.find()){
-            matchedString+=match.group();
+    public static String matchPattern(String str) {
+        String matchedString = "";
+        Matcher match = Pattern.compile("[a-zA-Z0-9]+").matcher(str);
+        while (match.find()) {
+            matchedString += match.group();
         }
         return matchedString;
     }
 
 
-    public static boolean isGivenStringAnagram(String inputString1,String inputString2){
+    public static boolean isGivenStringAnagram(String inputString1, String inputString2) {
 
-        inputString1= matchPattern(inputString1).toLowerCase();
-        inputString2= matchPattern(inputString2).toLowerCase();
+        inputString1 = matchPattern(inputString1).toLowerCase();
+        inputString2 = matchPattern(inputString2).toLowerCase();
 
-        if(inputString1.length()!=inputString2.length()){
+        if (inputString1.length() != inputString2.length()) {
             System.out.println("Not anagram");
             return false;
         }
-        boolean isAnagram=true;
+        boolean isAnagram = true;
 
 
-        for (char characterFromString1: inputString1.toCharArray()){
+        for (char characterFromString1 : inputString1.toCharArray()) {
 
-            if(inputString2.contains(String.valueOf(characterFromString1))){
+            if (inputString2.contains(String.valueOf(characterFromString1))) {
 
-                inputString2=inputString2.replaceFirst(String.valueOf(characterFromString1),"");
-            }else{
-                isAnagram=false;
+                inputString2 = inputString2.replaceFirst(String.valueOf(characterFromString1), "");
+            } else {
+                isAnagram = false;
                 break;
             }
         }
@@ -60,7 +62,7 @@ public class CheckWhetherAnagram {
 
     public static void main(String[] args) {
 
-        System.out.println(isGivenStringAnagram(" bbaaaa "," aa bb aa "));
+        System.out.println(isGivenStringAnagram(" bbaaaa ", " aa bb aa "));
 
     }
 }

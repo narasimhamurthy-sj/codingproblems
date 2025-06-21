@@ -16,38 +16,37 @@ import java.util.regex.Pattern;
  */
 
 
-
-
 public class CountVowelsAndConsonants {
 
 
-    public static String regXMatch(String regX,String baseString){
-        int count=0;
-        String matchedString="";
-        Matcher matchObject= Pattern.compile(regX).matcher(baseString);
-        while(matchObject.find()){
-           // System.out.print("  "+matchObject.group());
+    public static String regXMatch(String regX, String baseString) {
+        int count = 0;
+        String matchedString = "";
+        Matcher matchObject = Pattern.compile(regX).matcher(baseString);
+        while (matchObject.find()) {
+            // System.out.print("  "+matchObject.group());
             count++;
-            matchedString+=matchObject.group();
+            matchedString += matchObject.group();
         }
-        System.out.println("Count:"+count);
-        System.out.println("matchedString:"+matchedString);
+        System.out.println("Count:" + count);
+        System.out.println("matchedString:" + matchedString);
         return matchedString;
 
     }
-    public static void findCountOfVowelsAndConsonants(String inputString){
 
-        if(inputString==null ||inputString.isEmpty()){
+    public static void findCountOfVowelsAndConsonants(String inputString) {
+
+        if (inputString == null || inputString.isEmpty()) {
             return;
         }
-        System.out.println("Input string:"+inputString);
+        System.out.println("Input string:" + inputString);
 
-        String regXForconsonants="[a-zA-Z&&[^aeiouAEIOU]]";
-        String regXForVowels="[aeiouAEIOU]";
+        String regXForconsonants = "[a-zA-Z&&[^aeiouAEIOU]]";
+        String regXForVowels = "[aeiouAEIOU]";
         System.out.println("consonants:");
-        regXMatch(regXForconsonants,inputString);
+        regXMatch(regXForconsonants, inputString);
         System.out.println("Vowels:");
-        regXMatch(regXForVowels,inputString);
+        regXMatch(regXForVowels, inputString);
 
     }
 

@@ -70,7 +70,7 @@ public class GeneratePrimeNum {
 
 
     public static void generatePrimeNumberWithinLimit(int limitNumber) {
-      //  int currentPrimeCount = 0;
+        //  int currentPrimeCount = 0;
         int numberToBeCheckedForPrime = 3;
         if (limitNumber <= 0) {
             System.out.print("limitNumber Should be above zero");
@@ -95,7 +95,7 @@ public class GeneratePrimeNum {
     }
 
     public static void main(String[] args) {
-       // primeNumber(50);
+        // primeNumber(50);
 
         generatePrimeNumberWithinLimit(100);
     }

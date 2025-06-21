@@ -64,7 +64,7 @@ Step 2:In case of string ends with numbers,this will be missed in sum calculatio
     }
 
     public static void main(String[] args) {
-      //  System.out.println(calculateSum("12abc20yz68$10#00!04*200(10000ss"));
+        //  System.out.println(calculateSum("12abc20yz68$10#00!04*200(10000ss"));
         System.out.println(calculateSum(" 12abc20 2yz68$10 "));
         System.out.println(calculateSumUsingRegx(" 12abc20 2yz68$10 "));
 

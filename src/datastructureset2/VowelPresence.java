@@ -9,13 +9,13 @@ public class VowelPresence {
 
         boolean containsVowel = false;
 
-        try{
+        try {
 
-            if(Pattern.compile("[aeiou]", Pattern.CASE_INSENSITIVE).matcher(str).find()) {
+            if (Pattern.compile("[aeiou]", Pattern.CASE_INSENSITIVE).matcher(str).find()) {
                 System.out.println("Match found");
-                containsVowel=true;
+                containsVowel = true;
             }
-        }catch(Exception e){
+        } catch (Exception e) {
 
             e.printStackTrace();
         }
@@ -23,14 +23,11 @@ public class VowelPresence {
     }
 
 
-
-
-
-        public static boolean isVowelPresent(String str) {
+    public static boolean isVowelPresent(String str) {
 
         boolean containsVowel = false;
 
-        String[] strArr={"a","e","i","o","u"};
+        String[] strArr = {"a", "e", "i", "o", "u"};
 
         try {
 
@@ -69,9 +66,9 @@ public class VowelPresence {
 
     public static void main(String[] args) {
 
-      //  System.out.println("Is vowel present: " +isVowelPresent("A"));
+        //  System.out.println("Is vowel present: " +isVowelPresent("A"));
 
-        System.out.println("Is vowel present: " +isVowelPresentViaRegx("132aaeeiioouu"));
+        System.out.println("Is vowel present: " + isVowelPresentViaRegx("132aaeeiioouu"));
     }
 
     /*

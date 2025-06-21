@@ -81,42 +81,40 @@ public class FindK_FrequentElements {
         //different elements with single frequency
         //  frequentElementsObject.printTopFrequentElementsBasedOnValue_k(new int[]{1,2,3},1);
         //Single element with multiple frequency
-      //  frequentElementsObject.printTopFrequentElementsBasedOnValue_k(new int[]{1, 1, 1, 1, 1, 1}, 1);
+        //  frequentElementsObject.printTopFrequentElementsBasedOnValue_k(new int[]{1, 1, 1, 1, 1, 1}, 1);
 //single element with single frequency
-      //  frequentElementsObject.printTopFrequentElementsBasedOnValue_k(new int[]{1}, 1);
+        //  frequentElementsObject.printTopFrequentElementsBasedOnValue_k(new int[]{1}, 1);
 
 
-       // frequentElementsObject.improvedTopKElmentSolution(new int[]{1, 1, 1, 1, 1, 1}, 1);
-        frequentElementsObject.improvedTopKElmentSolution(new int[]{1,2,3,4,4,4,4,4,5,5,5,6,8,8,8,90,90,90,89,9,9,9},10);
+        // frequentElementsObject.improvedTopKElmentSolution(new int[]{1, 1, 1, 1, 1, 1}, 1);
+        frequentElementsObject.improvedTopKElmentSolution(new int[]{1, 2, 3, 4, 4, 4, 4, 4, 5, 5, 5, 6, 8, 8, 8, 90, 90, 90, 89, 9, 9, 9}, 10);
     }
 
 
+    public void improvedTopKElmentSolution(int[] inputArray, int k) {
 
+        HashMap<Integer, Integer> elementFrequencuMap = new HashMap<>();
 
-
-    public void improvedTopKElmentSolution(int[] inputArray,int k){
-
-        HashMap<Integer,Integer> elementFrequencuMap=new HashMap<>();
-
-        for(int element:inputArray){
-            elementFrequencuMap.put(element,elementFrequencuMap.getOrDefault(element,0)+1);
+        for (int element : inputArray) {
+            elementFrequencuMap.put(element, elementFrequencuMap.getOrDefault(element, 0) + 1);
         }
-        ArrayList<Map.Entry<Integer,Integer>> descendingSortedList=new ArrayList<>(elementFrequencuMap.entrySet());
-        Collections.sort(descendingSortedList,(k1,k2)->{
-            if(k1.getValue()== k2.getValue()){
-                return k2.getKey()-k1.getKey();
-            }else{
-               return k2.getValue()-k1.getValue();
+        ArrayList<Map.Entry<Integer, Integer>> descendingSortedList = new ArrayList<>(elementFrequencuMap.entrySet());
+        Collections.sort(descendingSortedList, (k1, k2) -> {
+            if (k1.getValue() == k2.getValue()) {
+                return k2.getKey() - k1.getKey();
+            } else {
+                return k2.getValue() - k1.getValue();
             }
 
-        } );
+        });
 
-        for (int descendingSortedListIndex = 0; descendingSortedListIndex <k && descendingSortedListIndex<descendingSortedList.size(); descendingSortedListIndex++) {
+        for (int descendingSortedListIndex = 0; descendingSortedListIndex < k && descendingSortedListIndex < descendingSortedList.size(); descendingSortedListIndex++) {
 
-            System.out.println("key:"+descendingSortedList.get(descendingSortedListIndex).getKey()+" value:"+descendingSortedList.get(descendingSortedListIndex).getValue());
+            System.out.println("key:" + descendingSortedList.get(descendingSortedListIndex).getKey() + " value:" + descendingSortedList.get(descendingSortedListIndex).getValue());
         }
 
     }
+
     public void printFrequencyElements(LinkedHashMap<Integer, Integer> descendingFrequencyMap, int k) {
 
 

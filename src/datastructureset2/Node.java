@@ -4,12 +4,17 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class Node {
+    static int currentListCount = 0;
     public Node link;
     public int info;
+    public int totalNodeCount;
     boolean visited;
+
+
     public Node() {
 
     }
+
 
     public Node(int info) {
         link = null;
@@ -18,17 +23,6 @@ public class Node {
         totalNodeCount++;
 
     }
-
-
-
-
-
-
-
-    static int currentListCount = 0;
-
-
-    public int totalNodeCount;
 
     public static Node createLL(int lengthOfLL) {
         currentListCount = 0;
@@ -91,8 +85,8 @@ public class Node {
     public static Node createLLWithManualEntryData(int[] duplicateArr) {
         currentListCount = 0;
         Node head = null;
-        Node cur=null;
-     //   int duplicateArr[] = new int[]{1,2,3,2,1};
+        Node cur = null;
+        //   int duplicateArr[] = new int[]{1,2,3,2,1};
 
 //        for (Integer arr:duplicateArr) {
 //            arr=new Random().nextInt(3);

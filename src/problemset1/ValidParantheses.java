@@ -57,48 +57,46 @@ Read each char in str using loop
  */
 
 
+    public static boolean isParanthesisValid(String inputString) {
+        boolean isValid = true;
 
-
-    public static boolean isParanthesisValid(String inputString){
-        boolean isValid=true;
-
-        HashMap<Character,Character> closedBrackets=new HashMap<>();
-        ArrayList<Character> openBrackets=new ArrayList<>();
-        ArrayList<Character> storeBrockets=new ArrayList<>();
+        HashMap<Character, Character> closedBrackets = new HashMap<>();
+        ArrayList<Character> openBrackets = new ArrayList<>();
+        ArrayList<Character> storeBrockets = new ArrayList<>();
 
         //Store closed brackets
-        closedBrackets.put(')','(');
-        closedBrackets.put('}','{');
-        closedBrackets.put(']','[');
+        closedBrackets.put(')', '(');
+        closedBrackets.put('}', '{');
+        closedBrackets.put(']', '[');
 
 
         openBrackets.add('(');
         openBrackets.add('{');
         openBrackets.add('[');
 
-        for(Character character:inputString.toCharArray()){
+        for (Character character : inputString.toCharArray()) {
 
-            if(openBrackets.contains(character)){
+            if (openBrackets.contains(character)) {
                 storeBrockets.add(character);
             } else if (closedBrackets.containsKey(character)) {
 
-                if(storeBrockets.isEmpty()){
+                if (storeBrockets.isEmpty()) {
                     System.out.println("For closed brackets, corresponding open brackets are not available ");
                     return false;
                 }
-                if(closedBrackets.get(character)==storeBrockets.getLast()){
-                    System.out.println("Character "+storeBrockets.getLast()+" has closing and opening brackets");
-                    storeBrockets.remove(storeBrockets.size()-1);
-                }else{
+                if (closedBrackets.get(character) == storeBrockets.getLast()) {
+                    System.out.println("Character " + storeBrockets.getLast() + " has closing and opening brackets");
+                    storeBrockets.remove(storeBrockets.size() - 1);
+                } else {
 
-                    isValid=false;
-                    System.out.println("Miss-match brackets found\n closed bracket"+character+" open bracket:"+storeBrockets.getLast());
+                    isValid = false;
+                    System.out.println("Miss-match brackets found\n closed bracket" + character + " open bracket:" + storeBrockets.getLast());
                     break;
 
                 }
 
-            }else{
-                System.out.println("Invalid character found:"+character);
+            } else {
+                System.out.println("Invalid character found:" + character);
                 return false;
 
 
@@ -107,11 +105,11 @@ Read each char in str using loop
 
         }
 
-        System.out.println("Stored bracket size:"+storeBrockets.size());
+        System.out.println("Stored bracket size:" + storeBrockets.size());
 
-        if(storeBrockets.size()>0 && isValid){
+        if (storeBrockets.size() > 0 && isValid) {
             System.out.println("Stored bracket has still open bracket and corresponding closed bracket not exists in string");
-            isValid=false;
+            isValid = false;
         }
 
         return isValid;

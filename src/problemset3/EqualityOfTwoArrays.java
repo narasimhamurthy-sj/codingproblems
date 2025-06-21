@@ -26,38 +26,38 @@ import java.util.Arrays;
 public class EqualityOfTwoArrays {
 
 
-    public boolean isArraysEqual(int[] array1,int[] array2){
+    public static void main(String[] args) {
+        System.out.println(new EqualityOfTwoArrays().isArraysEqual(new int[]{-2, 2, -2}, new int[]{-2, 2, -2}));
+    }
 
-        boolean isEqual=true;
-        if(array1.length!=array2.length){
+    public boolean isArraysEqual(int[] array1, int[] array2) {
+
+        boolean isEqual = true;
+        if (array1.length != array2.length) {
             System.out.println("Arrays lenth are different, not equal");
             return false;
         }
 
-        if(array1.length==0 && array2.length==0){
+        if (array1.length == 0 && array2.length == 0) {
             System.out.println("Empty arrays");
             return false;
         }
 
-        if(Arrays.stream(array1).sum()!=Arrays.stream(array2).sum()){
+        if (Arrays.stream(array1).sum() != Arrays.stream(array2).sum()) {
             System.out.println("Arrays sum not matching");
             return false;
         }
 
-        int indexFromLast=array1.length-1;
+        int indexFromLast = array1.length - 1;
 
-        for (int indexFromFirst = 0; indexFromFirst < (array1.length-1)/2; indexFromFirst++,indexFromLast--) {
+        for (int indexFromFirst = 0; indexFromFirst < (array1.length - 1) / 2; indexFromFirst++, indexFromLast--) {
 
-            if(array1[indexFromFirst]!=array2[indexFromFirst] || array1[indexFromLast]!=array2[indexFromLast]){
-                isEqual=false;
+            if (array1[indexFromFirst] != array2[indexFromFirst] || array1[indexFromLast] != array2[indexFromLast]) {
+                isEqual = false;
                 break;
             }
 
         }
         return isEqual;
-    }
-
-    public static void main(String[] args) {
-     System.out.println(new EqualityOfTwoArrays().isArraysEqual(new int[]{-2,2,-2},new int[]{-2,2,-2}));
     }
 }

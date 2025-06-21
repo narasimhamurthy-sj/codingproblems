@@ -25,33 +25,33 @@ input1: "abcd"
  */
 public class ReverseAString {
 
-    public static String reverseString(String inputString){
+    public static String reverseString(String inputString) {
         char tempVariable;
-        if(inputString.isEmpty()){
+        if (inputString.isEmpty()) {
             System.out.println("String is Empty");
             return inputString;
         }
-        char[] inputStringArray= inputString.toCharArray();
+        char[] inputStringArray = inputString.toCharArray();
         //String reversedString="";
 
-        int indexCountingFromBack=inputStringArray.length-1;
-        for (int indexOfInputString = 0; indexOfInputString <=(inputStringArray.length-1)/2; indexOfInputString++,indexCountingFromBack--) {
+        int indexCountingFromBack = inputStringArray.length - 1;
+        for (int indexOfInputString = 0; indexOfInputString <= (inputStringArray.length - 1) / 2; indexOfInputString++, indexCountingFromBack--) {
 
-            tempVariable=inputStringArray[indexOfInputString];
-            inputStringArray[indexOfInputString]=inputStringArray[indexCountingFromBack];
-            inputStringArray[indexCountingFromBack]=tempVariable;
+            tempVariable = inputStringArray[indexOfInputString];
+            inputStringArray[indexOfInputString] = inputStringArray[indexCountingFromBack];
+            inputStringArray[indexCountingFromBack] = tempVariable;
 
 
         }
 
         System.out.print("Reversed string:");
-       for (char ch:inputStringArray){
-           System.out.print(ch);
+        for (char ch : inputStringArray) {
+            System.out.print(ch);
 
-       }
+        }
         System.out.println();
-       //System.out.println("\nreversedString:"+new String(inputStringArray));
-       return new String(inputStringArray);
+        //System.out.println("\nreversedString:"+new String(inputStringArray));
+        return new String(inputStringArray);
     }
 
 

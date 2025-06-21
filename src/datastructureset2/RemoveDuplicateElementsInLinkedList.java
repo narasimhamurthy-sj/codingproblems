@@ -47,41 +47,41 @@ public class RemoveDuplicateElementsInLinkedList {
            END OF FOR
 
      */
-    public static void removeDuplicate(Node head){
+    public static void removeDuplicate(Node head) {
 
-        Node currendNode,nextNode,p1;
+        Node currendNode, nextNode, p1;
 
-        if(head==null){
+        if (head == null) {
             System.out.println("Empty list");
             return;
         }
-        currendNode=p1=head;
-        boolean isDuplicate=false,isListUnique=true;
-        while(currendNode!=null){
+        currendNode = p1 = head;
+        boolean isDuplicate = false, isListUnique = true;
+        while (currendNode != null) {
 
-            nextNode=currendNode.link;
+            nextNode = currendNode.link;
 
-            if(nextNode!=null && currendNode.info== nextNode.info){
-                isDuplicate=true;
-                isListUnique=false;
-            }else{
-                if(isDuplicate){
-                    p1.link=nextNode;
+            if (nextNode != null && currendNode.info == nextNode.info) {
+                isDuplicate = true;
+                isListUnique = false;
+            } else {
+                if (isDuplicate) {
+                    p1.link = nextNode;
                 }
-                p1=nextNode;
-                isDuplicate=false;
+                p1 = nextNode;
+                isDuplicate = false;
             }
-            currendNode=nextNode;
+            currendNode = nextNode;
         }
-        if(isListUnique){
+        if (isListUnique) {
             System.out.println("List doesn't have duplicate data");
         }
     }
 
     public static void main(String[] args) {
 
-        Node emptyList=null;
-        Node ll = Node.createLLWithManualEntryData(new int[]{1,2,2,3});
+        Node emptyList = null;
+        Node ll = Node.createLLWithManualEntryData(new int[]{1, 2, 2, 3});
         Node.printLL(ll);
 
         System.out.println("\n after removing duplicate");

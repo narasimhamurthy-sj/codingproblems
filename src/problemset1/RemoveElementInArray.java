@@ -52,11 +52,11 @@ increment index count
 
     public static int removeDuplicateElementsInArray(int[] inputArray, int deleteElement) {
 
-        int totalElementsInArray = inputArray.length-1;
+        int totalElementsInArray = inputArray.length - 1;
         int indexOfinputArray = 0;
         int matchCount = 0;
-        int swappedElementIndex = inputArray.length-1;
-        int k=0;
+        int swappedElementIndex = inputArray.length - 1;
+        int k = 0;
 
         while (indexOfinputArray <= totalElementsInArray) {
 
@@ -67,10 +67,10 @@ increment index count
 
                     inputArray[indexOfinputArray] = inputArray[swappedElementIndex - 1];
                     inputArray[swappedElementIndex] = '_';
-                    inputArray[swappedElementIndex-1] = '_';
+                    inputArray[swappedElementIndex - 1] = '_';
                     swappedElementIndex = swappedElementIndex - 2;
-                    totalElementsInArray=totalElementsInArray-2;
-                    matchCount=matchCount+2;
+                    totalElementsInArray = totalElementsInArray - 2;
+                    matchCount = matchCount + 2;
                 } else {
                     inputArray[indexOfinputArray] = inputArray[swappedElementIndex];
                     inputArray[swappedElementIndex] = '_';
@@ -83,32 +83,32 @@ increment index count
             }
         }
 
-        System.out.println("Found occurances:"+matchCount);
-        k=inputArray.length-matchCount;
-        Arrays.stream(inputArray).forEach(element-> System.out.println(element));
+        System.out.println("Found occurances:" + matchCount);
+        k = inputArray.length - matchCount;
+        Arrays.stream(inputArray).forEach(element -> System.out.println(element));
         return k;
     }
 
 
-    public static int simpleApproach(int[] inputArray,int value){
-        int kValues=0;
+    public static int simpleApproach(int[] inputArray, int value) {
+        int kValues = 0;
 
-        for (int inputArrayIndex = 0; inputArrayIndex <inputArray.length ; inputArrayIndex++) {
+        for (int inputArrayIndex = 0; inputArrayIndex < inputArray.length; inputArrayIndex++) {
 
-            if(inputArray[inputArrayIndex]!=value){
-                inputArray[kValues]=inputArray[inputArrayIndex];
+            if (inputArray[inputArrayIndex] != value) {
+                inputArray[kValues] = inputArray[inputArrayIndex];
                 kValues++;
             }
 
         }
-        Arrays.stream(inputArray).forEach(arrayElement->System.out.println(arrayElement));
+        Arrays.stream(inputArray).forEach(arrayElement -> System.out.println(arrayElement));
         return kValues;
     }
 
     public static void main(String[] args) {
 
-      //  System.out.println("K:"+removeDuplicateElementsInArray(new int[]{3,2,3,3},3));
-        System.out.println("K:"+simpleApproach(new int[]{3,1,2,3,0,2,2,3,3},3));
+        //  System.out.println("K:"+removeDuplicateElementsInArray(new int[]{3,2,3,3},3));
+        System.out.println("K:" + simpleApproach(new int[]{3, 1, 2, 3, 0, 2, 2, 3, 3}, 3));
 
 
     }

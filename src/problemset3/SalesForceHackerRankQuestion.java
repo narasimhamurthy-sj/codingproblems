@@ -282,7 +282,7 @@ public class SalesForceHackerRankQuestion {
                     //Check only the server errors which are not recognized as faulty servers
                     if (!faultyServersWithStatusList.contains(currentLogMessage)) {
                         serverErrCount++;
-                      //If the error count is consecutively 3, add it in faulty server List
+                        //If the error count is consecutively 3, add it in faulty server List
                         if (serverErrCount == 3) {
                             faultyServersWithStatusList.add(currentLogMessage);
                             //Reset count to 1 to assess next server error count

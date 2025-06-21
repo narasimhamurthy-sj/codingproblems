@@ -4,8 +4,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 
-import static java.lang.Math.abs;
-
 /*
 {-10,-2,5,6,1,12}
 
@@ -38,33 +36,33 @@ check nextnum <=complement
 public class PairsOfElementSumEqualToGivenNumber {
 
 
-    public static HashMap<Integer,Integer> findPairsOfElementInArray(int[] inputArray,int givenNum){
+    public static HashMap<Integer, Integer> findPairsOfElementInArray(int[] inputArray, int givenNum) {
 
         int complement;
-        int[][] matchedPairsArray=new int[inputArray.length*4][2];
-        int row=0;
-        int column=0;
-        HashMap<Integer,Integer> pairs=new HashMap<>();
+        int[][] matchedPairsArray = new int[inputArray.length * 4][2];
+        int row = 0;
+        int column = 0;
+        HashMap<Integer, Integer> pairs = new HashMap<>();
 
-        for (int indexOfOuterLoop = 0;  indexOfOuterLoop<inputArray.length-2 ; indexOfOuterLoop++) {
+        for (int indexOfOuterLoop = 0; indexOfOuterLoop < inputArray.length - 2; indexOfOuterLoop++) {
 
-            if(inputArray[indexOfOuterLoop]>0) {
+            if (inputArray[indexOfOuterLoop] > 0) {
                 if (inputArray[indexOfOuterLoop] >= givenNum) {
                     System.out.println("Element is greater than or equal to given num:" + inputArray[indexOfOuterLoop]);
                     continue;
                 }
             }
-            complement=Math.abs(inputArray[indexOfOuterLoop]-givenNum);
+            complement = Math.abs(inputArray[indexOfOuterLoop] - givenNum);
 
-            for (int innerLoop = indexOfOuterLoop+1; innerLoop < inputArray.length-1; innerLoop++) {
+            for (int innerLoop = indexOfOuterLoop + 1; innerLoop < inputArray.length - 1; innerLoop++) {
 
-                if(inputArray[innerLoop]<=complement){
+                if (inputArray[innerLoop] <= complement) {
 
-                    if(inputArray[indexOfOuterLoop]+inputArray[innerLoop]==givenNum){
+                    if (inputArray[indexOfOuterLoop] + inputArray[innerLoop] == givenNum) {
 
-                        pairs.put(inputArray[indexOfOuterLoop],inputArray[innerLoop]);
-                        matchedPairsArray[row][column]=inputArray[indexOfOuterLoop];
-                        matchedPairsArray[row][column+1]=inputArray[innerLoop];
+                        pairs.put(inputArray[indexOfOuterLoop], inputArray[innerLoop]);
+                        matchedPairsArray[row][column] = inputArray[indexOfOuterLoop];
+                        matchedPairsArray[row][column + 1] = inputArray[innerLoop];
                         row++;
 
                     }
@@ -74,15 +72,14 @@ public class PairsOfElementSumEqualToGivenNumber {
 
         }
 
-        if(pairs.isEmpty()){
+        if (pairs.isEmpty()) {
             System.out.println("No pairs");
-        }else {
-          //  pairs.forEach((k, v) -> System.out.println("(" + k + ", " + v + ")"));
+        } else {
+            //  pairs.forEach((k, v) -> System.out.println("(" + k + ", " + v + ")"));
 
 
-
-            Arrays.stream(matchedPairsArray).forEach((printRowise)->{
-                Arrays.stream(printRowise).forEach(element-> System.out.print(element+" "));
+            Arrays.stream(matchedPairsArray).forEach((printRowise) -> {
+                Arrays.stream(printRowise).forEach(element -> System.out.print(element + " "));
                 System.out.println();
             });
         }
@@ -94,21 +91,21 @@ public class PairsOfElementSumEqualToGivenNumber {
     // o(n) approach but some pairs of data is missing
     ///Ex new int[]{0,-1,2,1,-1,-2},-3)  o/p:(-2 -1)
 
-    public static void usingHashSetApproach(int[] inputarray,int givenNumber){
+    public static void usingHashSetApproach(int[] inputarray, int givenNumber) {
 
-        HashSet<Integer> arrayDataInSet=new HashSet<>();
+        HashSet<Integer> arrayDataInSet = new HashSet<>();
 
         int complement;
-        boolean isPairFound=false;
-        for (int arrayElement: inputarray){
-            complement=givenNumber-arrayElement;
-            if(arrayDataInSet.contains(complement)){
-                System.out.println("("+arrayElement+" "+complement+")");
-                isPairFound=true;
+        boolean isPairFound = false;
+        for (int arrayElement : inputarray) {
+            complement = givenNumber - arrayElement;
+            if (arrayDataInSet.contains(complement)) {
+                System.out.println("(" + arrayElement + " " + complement + ")");
+                isPairFound = true;
             }
             arrayDataInSet.add(arrayElement);
         }
-        if(!isPairFound){
+        if (!isPairFound) {
             System.out.println("noPairFound");
         }
     }
@@ -117,34 +114,32 @@ public class PairsOfElementSumEqualToGivenNumber {
     // in case of duplicate elements fails to identify all combinations
     //new int[]{2,2,2,2,2,2}
 
-    public static void twoPointerApproach(int[] inputArray,int givenNum){
+    public static void twoPointerApproach(int[] inputArray, int givenNum) {
         Arrays.sort(inputArray);
-        int startingIndex=0;
-        int lastIndex=inputArray.length-1;
+        int startingIndex = 0;
+        int lastIndex = inputArray.length - 1;
 
-        while(startingIndex<lastIndex){
+        while (startingIndex < lastIndex) {
 
-            if(inputArray[startingIndex]+inputArray[lastIndex]==givenNum){
-                System.out.println("("+inputArray[startingIndex]+", "+inputArray[lastIndex]+")");
+            if (inputArray[startingIndex] + inputArray[lastIndex] == givenNum) {
+                System.out.println("(" + inputArray[startingIndex] + ", " + inputArray[lastIndex] + ")");
                 startingIndex++;
                 lastIndex--;
-            }
-            else if(inputArray[startingIndex]<givenNum){
+            } else if (inputArray[startingIndex] < givenNum) {
                 startingIndex++;
-            }else{
+            } else {
                 lastIndex--;
             }
         }
 
 
-
-
     }
-    public static void main(String[] args) {
-       // findPairsOfElementInArray(new int[]{0,1,2,1,2,-1,2,1,2,1,2},2);
-        //usingHashSetApproach(new int[]{0,-1,2,-1,-2,1,2,-1,-2},-3);
-      //  twoPointerApproach(new int[]{0,-1,2,-1,-2,1,2,-1,-2},-3);
 
-        twoPointerApproach(new int[]{2,2,2,1,2,3},4);
+    public static void main(String[] args) {
+        // findPairsOfElementInArray(new int[]{0,1,2,1,2,-1,2,1,2,1,2},2);
+        //usingHashSetApproach(new int[]{0,-1,2,-1,-2,1,2,-1,-2},-3);
+        //  twoPointerApproach(new int[]{0,-1,2,-1,-2,1,2,-1,-2},-3);
+
+        twoPointerApproach(new int[]{2, 2, 2, 1, 2, 3}, 4);
     }
 }

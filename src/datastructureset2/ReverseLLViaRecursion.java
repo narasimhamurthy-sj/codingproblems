@@ -28,22 +28,7 @@ public class ReverseLLViaRecursion {
      */
 
 
-
-   static FindIntersectionNodeInLL.Node head;
-    public FindIntersectionNodeInLL.Node recusiveLL(FindIntersectionNodeInLL.Node node){
-
-
-        if(node.link==null){
-            head=node;
-            return node;
-        }
-        FindIntersectionNodeInLL.Node nodeReceivedFromEachFunctionCall= recusiveLL(node.link);
-        nodeReceivedFromEachFunctionCall.link=node;
-        node.link=null;
-        return node;
-
-    }
-
+    static FindIntersectionNodeInLL.Node head;
 
     public static void main(String[] args) {
         FindIntersectionNodeInLL.Node ll = FindIntersectionNodeInLL.createLL(3);
@@ -53,6 +38,20 @@ public class ReverseLLViaRecursion {
 
         new ReverseLLViaRecursion().recusiveLL(ll);
         FindIntersectionNodeInLL.printLL(head);
+
+    }
+
+    public FindIntersectionNodeInLL.Node recusiveLL(FindIntersectionNodeInLL.Node node) {
+
+
+        if (node.link == null) {
+            head = node;
+            return node;
+        }
+        FindIntersectionNodeInLL.Node nodeReceivedFromEachFunctionCall = recusiveLL(node.link);
+        nodeReceivedFromEachFunctionCall.link = node;
+        node.link = null;
+        return node;
 
     }
 }

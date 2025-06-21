@@ -30,38 +30,39 @@ public class FindLargestAndSmallestInArray {
      */
 
 
-    public static int[] findMinAndMaxElement(int[] inputArray){
+    public static int[] findMinAndMaxElement(int[] inputArray) {
 
-        if(inputArray.length==0){
+        if (inputArray.length == 0) {
             System.out.println("Empty array");
             return new int[]{};
         }
-        int minValue=inputArray[0];
-        int maxValue=inputArray[0];
+        int minValue = inputArray[0];
+        int maxValue = inputArray[0];
         for (int indexOfInputArray = 1; indexOfInputArray < inputArray.length; indexOfInputArray++) {
 
-            if(inputArray[indexOfInputArray]<minValue){
+            if (inputArray[indexOfInputArray] < minValue) {
 
-                minValue=inputArray[indexOfInputArray];
+                minValue = inputArray[indexOfInputArray];
             }
 
-            if(inputArray[indexOfInputArray]>maxValue){
+            if (inputArray[indexOfInputArray] > maxValue) {
 
-                maxValue=inputArray[indexOfInputArray];
+                maxValue = inputArray[indexOfInputArray];
             }
         }
-        System.out.println("Max:"+maxValue+" Min value:"+minValue);
-        return new int[]{minValue,maxValue};
+        System.out.println("Max:" + maxValue + " Min value:" + minValue);
+        return new int[]{minValue, maxValue};
     }
 
-public static void usingInbuilt(int[] arr){
+    public static void usingInbuilt(int[] arr) {
 
-  System.out.println(  Arrays.stream(arr).min().getAsInt());
-    System.out.println(  Arrays.stream(arr).max().getAsInt());
-}
+        System.out.println(Arrays.stream(arr).min().getAsInt());
+        System.out.println(Arrays.stream(arr).max().getAsInt());
+    }
+
     public static void main(String[] args) {
 
-       // usingInbuilt(new int[]{1,5,2,3,4});
-        findMinAndMaxElement(new int[]{-1,2,3,0});
+        // usingInbuilt(new int[]{1,5,2,3,4});
+        findMinAndMaxElement(new int[]{-1, 2, 3, 0});
     }
 }

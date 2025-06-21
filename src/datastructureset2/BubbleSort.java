@@ -33,12 +33,12 @@ i.e,   j<n-1-i
 
     public static int[] bubbleSort(int[] inputArray) {
 
-        if(inputArray.length==0){
+        if (inputArray.length == 0) {
             System.out.println("Empty array");
             return inputArray;
         }
         System.out.println("Before Sort");
-        Arrays.stream(inputArray).forEach(element->System.out.println(element));
+        Arrays.stream(inputArray).forEach(element -> System.out.println(element));
 
         int temporaryElementToStoreData;
         for (int i = 0; i < inputArray.length - 1; i++) {
@@ -54,7 +54,7 @@ i.e,   j<n-1-i
         }
 
         System.out.println("After Sort");
-        Arrays.stream(inputArray).forEach(element->System.out.print(element+"\t"));
+        Arrays.stream(inputArray).forEach(element -> System.out.print(element + "\t"));
 
         return inputArray;
     }
@@ -74,6 +74,6 @@ i.e,   j<n-1-i
         10. 1,2,5,3,4 (mid element is not sorted)
          */
 
-        bubbleSort(new int[] {1,2,5,3,4});
+        bubbleSort(new int[]{1, 2, 5, 3, 4});
     }
 }

@@ -1,8 +1,8 @@
 public class Test {
 
     public static void main(String[] args) {
+        String a = "abc";
+        System.out.println(a.substring(3, 3));
 
-        String str="1234";
-       System.out.println( str.indexOf("23"));
     }
 }

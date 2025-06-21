@@ -18,9 +18,9 @@ public class FindDuplicateElementsInArray {
 
     public static HashSet<Integer> isArrayDuplicate(Integer[] array) {
 
-        boolean isDuplicate=false;
-        HashSet<Integer> duplicateElementsList=new HashSet<Integer>();
-        HashMap<Integer,Integer> duplicateElementDetails=new HashMap<Integer,Integer>();
+        boolean isDuplicate = false;
+        HashSet<Integer> duplicateElementsList = new HashSet<Integer>();
+        HashMap<Integer, Integer> duplicateElementDetails = new HashMap<Integer, Integer>();
         ArrayList<Integer> arrAsList = new ArrayList<Integer>(Arrays.asList(array));
 
         System.out.println("Array : " + arrAsList);
@@ -28,7 +28,7 @@ public class FindDuplicateElementsInArray {
         for (int arrIndex = 0; arrIndex < arrAsList.size(); ) {
 
             Integer elementToBeCheckedForDuplicate = (Integer) arrAsList.remove(arrIndex);
-          //  System.out.println("elementToBeCheckedForDuplicate : " + elementToBeCheckedForDuplicate);
+            //  System.out.println("elementToBeCheckedForDuplicate : " + elementToBeCheckedForDuplicate);
 
             if (!arrAsList.isEmpty()) {
                 int duplicateOcuurance = 1;
@@ -36,26 +36,26 @@ public class FindDuplicateElementsInArray {
                 while (arrAsList.contains(elementToBeCheckedForDuplicate)) {
                     duplicateOcuurance++;
                     arrAsList.remove(elementToBeCheckedForDuplicate);
-                  //  System.out.println("duplicate element: " + elementToBeCheckedForDuplicate + " Occurance: " + duplicateOcuurance);
+                    //  System.out.println("duplicate element: " + elementToBeCheckedForDuplicate + " Occurance: " + duplicateOcuurance);
                     duplicateElementsList.add(elementToBeCheckedForDuplicate);
-                    duplicateElementDetails.put(elementToBeCheckedForDuplicate,duplicateOcuurance);
+                    duplicateElementDetails.put(elementToBeCheckedForDuplicate, duplicateOcuurance);
 
                 }
             }
         }
 
 
-        duplicateElementDetails.forEach((key,value)->System.out.println("Duplicate element: "+key +", Occurance: " +value));
+        duplicateElementDetails.forEach((key, value) -> System.out.println("Duplicate element: " + key + ", Occurance: " + value));
         return duplicateElementsList;
     }
 
 
-    public static HashSet<Integer> efficientWayToFindDuplicateElements(Integer[] array){
+    public static HashSet<Integer> efficientWayToFindDuplicateElements(Integer[] array) {
 
-        HashSet<Integer> storeIdentifiedDuplicatesInSet= new HashSet<>();
-        HashSet<Integer> storeUniqueArrayElements= new HashSet<>();
+        HashSet<Integer> storeIdentifiedDuplicatesInSet = new HashSet<>();
+        HashSet<Integer> storeUniqueArrayElements = new HashSet<>();
 
-        HashMap<Integer,Integer> duplicateElementsAndOccurances=new HashMap<>();
+        HashMap<Integer, Integer> duplicateElementsAndOccurances = new HashMap<>();
 
 //        for (Integer arrayElement : array) {
 //            if (!storeUniqueArrayElements.add(arrayElement)) {
@@ -76,36 +76,36 @@ public class FindDuplicateElementsInArray {
                 });
 
 
-                        System.out.println("Duplicate:"+storeIdentifiedDuplicatesInSet);
+        System.out.println("Duplicate:" + storeIdentifiedDuplicatesInSet);
         return storeIdentifiedDuplicatesInSet;
     }
 
-    public static boolean findDuplicatesinArrayUsingMap(Integer[] array){
+    public static boolean findDuplicatesinArrayUsingMap(Integer[] array) {
 
-        HashMap<Integer,Integer> elementsWithOccurance=new HashMap<>();
-        int occuranceCount=1;
-        for (Integer arrayElement:array) {
+        HashMap<Integer, Integer> elementsWithOccurance = new HashMap<>();
+        int occuranceCount = 1;
+        for (Integer arrayElement : array) {
 
-           // elementsWithOccurance.put(arrayElement,)
-            if(elementsWithOccurance.containsKey(arrayElement)){
-                occuranceCount=elementsWithOccurance.get(arrayElement);
+            // elementsWithOccurance.put(arrayElement,)
+            if (elementsWithOccurance.containsKey(arrayElement)) {
+                occuranceCount = elementsWithOccurance.get(arrayElement);
                 occuranceCount++;
 
             }
-            elementsWithOccurance.put(arrayElement,occuranceCount);
-            occuranceCount=1;
+            elementsWithOccurance.put(arrayElement, occuranceCount);
+            occuranceCount = 1;
         }
 
-boolean isDuplicateAbsent=false;
-        for(Map.Entry<Integer,Integer> entry:elementsWithOccurance.entrySet()){
+        boolean isDuplicateAbsent = false;
+        for (Map.Entry<Integer, Integer> entry : elementsWithOccurance.entrySet()) {
 
-            if(entry.getValue()>1){
-                isDuplicateAbsent=true;
-                System.out.println("Duplicate Element:"+entry.getKey()+" Duplicate Count:"+ entry.getValue());
+            if (entry.getValue() > 1) {
+                isDuplicateAbsent = true;
+                System.out.println("Duplicate Element:" + entry.getKey() + " Duplicate Count:" + entry.getValue());
 
 
-               // elementsWithOccurance.get(1).
-                            }
+                // elementsWithOccurance.get(1).
+            }
         }
 
         return isDuplicateAbsent;
@@ -134,7 +134,7 @@ For finding dup elements:
 
          */
 
-      //  HashSet<Integer> list=isArrayDuplicate( new Integer []{ 01,2,1,3,04,4});
+        //  HashSet<Integer> list=isArrayDuplicate( new Integer []{ 01,2,1,3,04,4});
        /* HashSet<Integer> list=efficientWayToFindDuplicateElements( new Integer []{ 1,2,1,3,4,4});
       if( list.isEmpty()){
            System.out.println("Array doesn't have duplicate element ");
@@ -143,7 +143,7 @@ For finding dup elements:
           System.out.println("duplicate element "+list);
       }*/
 
-        if(!findDuplicatesinArrayUsingMap(new Integer[]{ 1,2,2,3,4}))
+        if (!findDuplicatesinArrayUsingMap(new Integer[]{1, 2, 2, 3, 4}))
             System.out.println("Array doesn't have duplicate element ");
     }
 }

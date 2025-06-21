@@ -2,22 +2,9 @@ package datastructure;
 
 public class StackUsingLinkedList {
 
-    static class Node {
-        int data;
-        Node link;
-        Node previousNode;
-
-        Node(int data) {
-            this.data = data;
-            this.link = null;
-            this.previousNode = null;
-        }
-    }
-
     static Node top = null;
     static int capacity = 2;
     static int currentNodes = 0;
-    // static Node tail=null;
 
     public static void push(Node newNode) {
 
@@ -36,7 +23,7 @@ public class StackUsingLinkedList {
 
         currentNodes++;
     }
-
+    // static Node tail=null;
 
     public static void pop() {
         if (currentNodes <= 0 || top == null) {
@@ -51,7 +38,6 @@ public class StackUsingLinkedList {
 
     }
 
-
     public static void printStackElements() {
         Node currentNode = top;
         if (currentNodes <= 0 || top == null) {
@@ -63,6 +49,31 @@ public class StackUsingLinkedList {
             System.out.println(currentNode.data);
             currentNode = currentNode.previousNode;
         }
+
+    }
+
+    public static void main(String[] args) {
+        push(new Node(10));
+        push(new Node(20));
+        push(new Node(30));
+        printStackElements();
+        pop();
+        printStackElements();
+        System.out.println("currentNodes:" + currentNodes);
+        pop();
+        pop();
+        System.out.println("currentNodes:" + currentNodes);
+        pop();
+        push(new Node(10));
+        push(new Node(20));
+        printStackElements();
+        System.out.println("currentNodes:" + currentNodes);
+        pop();
+        System.out.println("currentNodes:" + currentNodes);
+        push(new Node(10));
+        push(new Node(20));
+        printStackElements();
+
 
     }
 //optmized soln from net
@@ -106,29 +117,16 @@ public static void main(String args[]) {
 }
 */
 
-    public static void main(String[] args) {
-        push(new Node(10));
-        push(new Node(20));
-        push(new Node(30));
-        printStackElements();
-        pop();
-        printStackElements();
-        System.out.println("currentNodes:"+currentNodes);
-        pop();
-        pop();
-        System.out.println("currentNodes:"+currentNodes);
-        pop();
-        push(new Node(10));
-        push(new Node(20));
-        printStackElements();
-        System.out.println("currentNodes:"+currentNodes);
-        pop();
-        System.out.println("currentNodes:"+currentNodes);
-        push(new Node(10));
-        push(new Node(20));
-        printStackElements();
+    static class Node {
+        int data;
+        Node link;
+        Node previousNode;
 
-
+        Node(int data) {
+            this.data = data;
+            this.link = null;
+            this.previousNode = null;
+        }
     }
 
 }

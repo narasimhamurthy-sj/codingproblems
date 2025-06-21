@@ -22,50 +22,50 @@ input 3:trailing spaces
 
  */
 
-    public static String reverseWords(String inputString){
+    public static String reverseWords(String inputString) {
 
-        if(inputString.isEmpty()){
+        if (inputString.isEmpty()) {
 
             System.out.println("Empty string");
             return "";
         }
-        String reversedWords="";
-        inputString=inputString.trim();
-        String[] wordsStoredInArray=inputString.split(" ");
+        String reversedWords = "";
+        inputString = inputString.trim();
+        String[] wordsStoredInArray = inputString.split(" ");
 
-        for (int i = wordsStoredInArray.length-1; i >=0 ; i--) {
+        for (int i = wordsStoredInArray.length - 1; i >= 0; i--) {
 
-            if(!wordsStoredInArray[i].isEmpty()){
-                reversedWords+=wordsStoredInArray[i];
+            if (!wordsStoredInArray[i].isEmpty()) {
+                reversedWords += wordsStoredInArray[i];
 
-                if(i!=0){
-                    reversedWords+=" ";
+                if (i != 0) {
+                    reversedWords += " ";
                 }
             }
         }
 
 
-        System.out.println("string length:"+reversedWords.length());
+        System.out.println("string length:" + reversedWords.length());
         return reversedWords;
     }
 
-public static String simpleApproach(String inputString){
+    public static String simpleApproach(String inputString) {
 
-        String[] wordsArray=inputString.trim().split("\\s+");
-        String reversedWord="";
-    for (int indexOfWordsArray = wordsArray.length-1; indexOfWordsArray >=0 ; indexOfWordsArray--) {
+        String[] wordsArray = inputString.trim().split("\\s+");
+        String reversedWord = "";
+        for (int indexOfWordsArray = wordsArray.length - 1; indexOfWordsArray >= 0; indexOfWordsArray--) {
 
-        reversedWord+=wordsArray[indexOfWordsArray];
+            reversedWord += wordsArray[indexOfWordsArray];
 
-        if(indexOfWordsArray>0){
-            reversedWord+=" ";
+            if (indexOfWordsArray > 0) {
+                reversedWord += " ";
+            }
         }
+        return reversedWord;
     }
-    return reversedWord;
-}
-    public static void main(String[] args) {
-       System.out.println( simpleApproach("word a   b   c     d   "));
 
+    public static void main(String[] args) {
+        System.out.println(simpleApproach("word a   b   c     d   "));
 
 
     }

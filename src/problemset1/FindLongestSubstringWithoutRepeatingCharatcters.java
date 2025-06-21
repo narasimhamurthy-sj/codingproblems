@@ -55,7 +55,7 @@ END
 
     public static String printLongestSubString(String inputString) {
 
-        inputString=inputString.toLowerCase();
+        inputString = inputString.toLowerCase();
         HashSet<Character> storeInputStringInSet = new HashSet<>();
         String newSubString = "";
         int previousSubStringMaxLength = 0;
@@ -97,7 +97,6 @@ END
         return longestSubString;
     }
 
-
     public static void main(String[] args) {
 
         /*
@@ -130,6 +129,47 @@ END
         12abcd34
         12abcd3412abcd34
          */
-        printLongestSubString("abca.:',");
+        printLongestSubString("abcabcd");
+    }
+
+    public String findLongestSubStr(String str) {
+
+        String currentSubStr = "";
+        HashSet<Character> eliminateDuplicateCharSet = new HashSet<>();
+        String previousSubStr = "", longestSubStr = "";
+
+        if (str == null || str.isEmpty()) {
+            System.out.println("Empty string");
+            return str;
+        }
+        int index = 0;
+        while (index < str.length()) {
+            char charFromStr = str.charAt(index);
+
+            if (eliminateDuplicateCharSet.add(charFromStr)) {
+                currentSubStr += charFromStr;
+                //This is a case where longest subStr appears at the end of string
+                //or entire string is unique
+                if (index == str.length() - 1) {
+
+                    if (previousSubStr.length() < currentSubStr.length()) {
+                        longestSubStr = currentSubStr;
+                    }
+                }
+            } else {
+
+                if (previousSubStr.length() < currentSubStr.length()) {
+                    previousSubStr = currentSubStr;
+                    longestSubStr = currentSubStr;
+                }
+                currentSubStr = "";
+                eliminateDuplicateCharSet.clear();
+                eliminateDuplicateCharSet.add(charFromStr);
+                currentSubStr += charFromStr;
+            }
+            index++;
+        }
+        System.out.println("longestSubStr:" + longestSubStr + " and length:" + longestSubStr.length());
+        return longestSubStr;
     }
 }

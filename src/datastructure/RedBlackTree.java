@@ -1,4 +1,5 @@
 package datastructure;
+
 /*
 Properties of a Red-Black Tree
 The root of the tree is always black.
@@ -191,18 +192,18 @@ currentNode=root
  */
 public class RedBlackTree {
 
-    class  Node{
+    class Node {
         Node leftChild;
         Node rightChild;
-        String color="";
+        String color = "";
 
         int nodeData;
 
-        Node(int nodeData){
-            leftChild=null;
-            rightChild=null;
-            color="red";
-            this.nodeData=nodeData;
+        Node(int nodeData) {
+            leftChild = null;
+            rightChild = null;
+            color = "red";
+            this.nodeData = nodeData;
         }
     }
 }

@@ -21,21 +21,21 @@ public class RecursiveFibonacci {
 
      */
 
-    public void fibonacciNum(int firstNum,int secondNum,int lengthOfFibonacciSeries){
-
-        if(lengthOfFibonacciSeries==0){
-            return;
-        }
-        int fibNum=firstNum+secondNum;
-        System.out.println(fibNum);
-
-        fibonacciNum(secondNum,fibNum,lengthOfFibonacciSeries-1);
+    public static void main(String[] args) {
+        int firstNum = 1;
+        int secondNum = 1;
+        new RecursiveFibonacci().fibonacciNum(firstNum, secondNum, 6);
     }
 
-    public static void main(String[] args) {
-        int firstNum=1;
-        int secondNum=1;
-        new RecursiveFibonacci().fibonacciNum(firstNum,secondNum,6);
+    public void fibonacciNum(int firstNum, int secondNum, int lengthOfFibonacciSeries) {
+
+        if (lengthOfFibonacciSeries == 0) {
+            return;
+        }
+        int fibNum = firstNum + secondNum;
+        System.out.println(fibNum);
+
+        fibonacciNum(secondNum, fibNum, lengthOfFibonacciSeries - 1);
     }
 
 
