@@ -1,4 +1,4 @@
-package dataStructureset3;
+package dataStructureSet3;
 
 /*
 A sorted array like:
@@ -70,3 +70,4 @@ public class SerachKeyInRotatedSortedArray {
         return -1;
     }
 }
+
